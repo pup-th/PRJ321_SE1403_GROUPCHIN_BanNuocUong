@@ -11,10 +11,20 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_if_test;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_if_test = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_if_test.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -41,6 +51,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -80,7 +91,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            }\n");
       out.write("        </script>\n");
       out.write("    </head><!--/head-->\n");
-      out.write("    \n");
+      out.write("\n");
       out.write("    <body>\n");
       out.write("        ");
 
@@ -90,15 +101,15 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
             if (request.getAttribute("fail") != null) {
                 fail = request.getAttribute("fail").toString();
             }
-            if(request.getAttribute("fillEmail") != null &&
-                    request.getAttribute("fillPass") != null){
+            if (request.getAttribute("fillEmail") != null
+                    && request.getAttribute("fillPass") != null) {
                 fillEmail = request.getAttribute("fillEmail").toString();
                 fillPass = request.getAttribute("fillPass").toString();
             }
         
       out.write("\n");
       out.write("        <header id=\"header\"><!--header-->\n");
-      out.write("            \n");
+      out.write("\n");
       out.write("\n");
       out.write("            <div class=\"header-middle\"><!--header-middle-->\n");
       out.write("                <div class=\"container\">\n");
@@ -106,30 +117,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <div class=\"col-sm-4\">\n");
       out.write("                            <div class=\"logo pull-left\">\n");
       out.write("                                <a href=\"index.jsp\"><img src=\"images/home/logo.png\" alt=\"\" /></a>\n");
-      out.write("                            </div>\n");
-      out.write("                            <div class=\"btn-group pull-right\">\n");
-      out.write("                                <div class=\"btn-group\">\n");
-      out.write("                                    <button type=\"button\" class=\"btn btn-default dropdown-toggle usa\" data-toggle=\"dropdown\">\n");
-      out.write("                                        USA\n");
-      out.write("                                        <span class=\"caret\"></span>\n");
-      out.write("                                    </button>\n");
-      out.write("                                    <ul class=\"dropdown-menu\">\n");
-      out.write("                                        <li><a href=\"\">Canada</a></li>\n");
-      out.write("                                        <li><a href=\"\">UK</a></li>\n");
-      out.write("                                    </ul>\n");
-      out.write("                                </div>\n");
-      out.write("\n");
-      out.write("                                <div class=\"btn-group\">\n");
-      out.write("                                    <button type=\"button\" class=\"btn btn-default dropdown-toggle usa\" data-toggle=\"dropdown\">\n");
-      out.write("                                        DOLLAR\n");
-      out.write("                                        <span class=\"caret\"></span>\n");
-      out.write("                                    </button>\n");
-      out.write("                                    <ul class=\"dropdown-menu\">\n");
-      out.write("                                        <li><a href=\"\">Canadian Dollar</a></li>\n");
-      out.write("                                        <li><a href=\"\">Pound</a></li>\n");
-      out.write("                                    </ul>\n");
-      out.write("                                </div>\n");
-      out.write("                            </div>\n");
+      out.write("                            </div> \n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-sm-8\">\n");
       out.write("                            <div class=\"shop-menu pull-right\">\n");
@@ -169,14 +157,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                            <li><a href=\"cart.jsp\">Cart</a></li> \n");
       out.write("                                            <li><a href=\"login.jsp\" class=\"active\">Login</a></li> \n");
       out.write("                                        </ul>\n");
-      out.write("                                    </li> \n");
-      out.write("                                    <li class=\"dropdown\"><a href=\"#\">Blog<i class=\"fa fa-angle-down\"></i></a>\n");
-      out.write("                                        <ul role=\"menu\" class=\"sub-menu\">\n");
-      out.write("                                            <li><a href=\"blog.jsp\">Blog List</a></li>\n");
-      out.write("                                            <li><a href=\"blog-single.jsp\">Blog Single</a></li>\n");
-      out.write("                                        </ul>\n");
-      out.write("                                    </li> \n");
-      out.write("                                    <li><a href=\"404.jsp\">404</a></li>\n");
+      out.write("                                    </li>  \n");
       out.write("                                    <li><a href=\"contact-us.jsp\">Contact</a></li>\n");
       out.write("                                </ul>\n");
       out.write("                            </div>\n");
@@ -203,7 +184,9 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <div class=\"user\">\n");
       out.write("                        <input type=\"text\" placeHolder=\"Email\" name =\"txtEmail\" value=\"");
       out.print(fillEmail);
-      out.write("\"  onfocus=\"this.value = '';\" onblur=\"if (this.value == '') {this.value = 'Email';}\">\n");
+      out.write("\"  onfocus=\"this.value = '';\" onblur=\"if (this.value == '') {\n");
+      out.write("                                    this.value = 'Email';\n");
+      out.write("                                }\">\n");
       out.write("                        <i></i>\n");
       out.write("                    </div>\n");
       out.write("                    <div class=\"user-in\">\n");
@@ -211,20 +194,38 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(fillPass);
       out.write("\" required ><i></i>\n");
       out.write("                    </div>\n");
-      out.write("                <c:if test=\"");
-      out.print(fail != null);
-      out.write("\">\n");
-      out.write("                    <div id=\"fail\" style=\"text-align: center; color: red; font-family: sans-serif;\">");
-      out.print(fail);
-      out.write("</div>\n");
-      out.write("                </c:if>\n");
-      out.write("                <div class=\"keepme\">\n");
-      out.write("                    <div class=\"keep-loginbutton\">\n");
-      out.write("                        <input type=\"submit\" value=\"Log in\" />\n");
-      out.write("                        </form>\n");
+      out.write("                    ");
+      //  c:if
+      org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+      _jspx_th_c_if_0.setPageContext(_jspx_page_context);
+      _jspx_th_c_if_0.setParent(null);
+      _jspx_th_c_if_0.setTest(fail != null);
+      int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
+      if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                        <div id=\"fail\" style=\"text-align: center; color: red; font-family: sans-serif;\">");
+          out.print(fail);
+          out.write("</div>\n");
+          out.write("                    ");
+          int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_if_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+        return;
+      }
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+      out.write("\n");
+      out.write("                    <div class=\"keepme\">\n");
+      out.write("                        <div class=\"keep-loginbutton\">\n");
+      out.write("                            <input type=\"submit\" value=\"Log in\" /> \n");
+      out.write("                        </div>\n");
+      out.write("                        <div class=\"clear\"> </div>\n");
       out.write("                    </div>\n");
-      out.write("                    <div class=\"clear\"> </div>\n");
-      out.write("                </div>\n");
+      out.write("                </form>\n");
       out.write("                <div class=\"forgot\">\n");
       out.write("                    <div class=\"forgot-register\">\n");
       out.write("                        <p>Don't have an account? <a href=\"register.jsp\">Register Now</a></p>\n");

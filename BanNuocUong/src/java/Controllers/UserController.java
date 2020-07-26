@@ -9,7 +9,6 @@ import DAO.AdminDAO;
 import DAO.UserDAO;
 import Entities.Users;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +34,35 @@ public class UserController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException { 
+        
         UserDAO uDAO = new UserDAO();
         AdminDAO aDAO = new AdminDAO();
         String email = request.getParameter("txtEmail");
@@ -69,12 +97,10 @@ public class UserController extends HttpServlet {
                     }else{
                         if (uMail.equals("")) {
                             request.getSession().setAttribute("fail", "You don't have account on our website, please Register");
-                            request.getRequestDispatcher("login.jsp").forward(request, response);
-    //                    response.sendRedirect("login.jsp");
+                            request.getRequestDispatcher("login.jsp").forward(request, response); 
                         } else {
                             request.getSession().setAttribute("uMail", mail);
-                            request.getRequestDispatcher("home.jsp").forward(request, response);
-    //                    response.sendRedirect("home.jsp");
+                            request.getRequestDispatcher("home.jsp").forward(request, response); 
                         }
                     }
                 }
@@ -90,35 +116,6 @@ public class UserController extends HttpServlet {
                 Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

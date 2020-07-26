@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -41,7 +42,7 @@
             }
         </script>
     </head><!--/head-->
-    
+
     <body>
         <%
             String fail = "";
@@ -50,51 +51,27 @@
             if (request.getAttribute("fail") != null) {
                 fail = request.getAttribute("fail").toString();
             }
-            if(request.getAttribute("fillEmail") != null &&
-                    request.getAttribute("fillPass") != null){
+            if (request.getAttribute("fillEmail") != null
+                    && request.getAttribute("fillPass") != null) {
                 fillEmail = request.getAttribute("fillEmail").toString();
                 fillPass = request.getAttribute("fillPass").toString();
             }
         %>
         <header id="header"><!--header-->
-            
+
 
             <div class="header-middle"><!--header-middle-->
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="logo pull-left">
-                                <a href="index.jsp"><img src="images/home/logo.png" alt="" /></a>
-                            </div>
-                            <div class="btn-group pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                        USA
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="">Canada</a></li>
-                                        <li><a href="">UK</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                        DOLLAR
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="">Canadian Dollar</a></li>
-                                        <li><a href="">Pound</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                                <a href="home.jsp"><img src="images/home/logo.png" alt="" /></a>
+                            </div> 
                         </div>
                         <div class="col-sm-8">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
-                                    <li><a href=""><i class="fa fa-user"></i> Account</a></li>
-                                    <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
+                                    <li><a href=""><i class="fa fa-user"></i> Account</a></li> 
                                     <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                     <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                     <li><a href="login.jsp" class="active"><i class="fa fa-lock"></i> Login</a></li>
@@ -119,7 +96,7 @@
                             </div>
                             <div class="mainmenu pull-left">
                                 <ul class="nav navbar-nav collapse navbar-collapse">
-                                    <li><a href="index.jsp">Home</a></li>
+                                    <li><a href="home.jsp">Home</a></li>
                                     <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                         <ul role="menu" class="sub-menu">
                                             <li><a href="shop.jsp">Products</a></li>
@@ -128,14 +105,7 @@
                                             <li><a href="cart.jsp">Cart</a></li> 
                                             <li><a href="login.jsp" class="active">Login</a></li> 
                                         </ul>
-                                    </li> 
-                                    <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                        <ul role="menu" class="sub-menu">
-                                            <li><a href="blog.jsp">Blog List</a></li>
-                                            <li><a href="blog-single.jsp">Blog Single</a></li>
-                                        </ul>
-                                    </li> 
-                                    <li><a href="404.jsp">404</a></li>
+                                    </li>  
                                     <li><a href="contact-us.jsp">Contact</a></li>
                                 </ul>
                             </div>
@@ -160,22 +130,24 @@
                 <h3>Log in With registered details:</h3>
                 <form action="UserController" method="POST">
                     <div class="user">
-                        <input type="text" placeHolder="Email" name ="txtEmail" value="<%=fillEmail%>"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
+                        <input type="text" placeHolder="Email" name ="txtEmail" value="<%=fillEmail%>"  onfocus="this.value = '';" onblur="if (this.value == '') {
+                                    this.value = 'Email';
+                                }">
                         <i></i>
                     </div>
                     <div class="user-in">
                         <input type="password"  name="txtPass" placeholder="Password" value="<%=fillPass%>" required ><i></i>
                     </div>
-                <c:if test="<%=fail != null%>">
-                    <div id="fail" style="text-align: center; color: red; font-family: sans-serif;"><%=fail%></div>
-                </c:if>
-                <div class="keepme">
-                    <div class="keep-loginbutton">
-                        <input type="submit" value="Log in" />
-                        </form>
+                    <c:if test="<%=fail != null%>">
+                        <div id="fail" style="text-align: center; color: red; font-family: sans-serif;"><%=fail%></div>
+                    </c:if>
+                    <div class="keepme">
+                        <div class="keep-loginbutton">
+                            <input type="submit" value="Log in" /> 
+                        </div>
+                        <div class="clear"> </div>
                     </div>
-                    <div class="clear"> </div>
-                </div>
+                </form>
                 <div class="forgot">
                     <div class="forgot-register">
                         <p>Don't have an account? <a href="register.jsp">Register Now</a></p>
