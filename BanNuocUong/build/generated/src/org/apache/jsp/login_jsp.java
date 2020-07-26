@@ -70,10 +70,6 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link href=\"css/animate.css\" rel=\"stylesheet\">\n");
       out.write("        <link href=\"css/main.css\" rel=\"stylesheet\">\n");
       out.write("        <link href=\"css/responsive.css\" rel=\"stylesheet\">\n");
-      out.write("        <!--[if lt IE 9]>\n");
-      out.write("        <script src=\"js/html5shiv.js\"></script>\n");
-      out.write("        <script src=\"js/respond.min.js\"></script>\n");
-      out.write("        <![endif]-->       \n");
       out.write("        <link rel=\"shortcut icon\" href=\"images/ico/favicon.ico\">\n");
       out.write("        <link rel=\"apple-touch-icon-precomposed\" sizes=\"144x144\" href=\"images/ico/apple-touch-icon-144-precomposed.png\">\n");
       out.write("        <link rel=\"apple-touch-icon-precomposed\" sizes=\"114x114\" href=\"images/ico/apple-touch-icon-114-precomposed.png\">\n");
@@ -116,14 +112,13 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <div class=\"row\">\n");
       out.write("                        <div class=\"col-sm-4\">\n");
       out.write("                            <div class=\"logo pull-left\">\n");
-      out.write("                                <a href=\"index.jsp\"><img src=\"images/home/logo.png\" alt=\"\" /></a>\n");
+      out.write("                                <a href=\"home.jsp\"><img src=\"images/home/logo.png\" alt=\"\" /></a>\n");
       out.write("                            </div> \n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-sm-8\">\n");
       out.write("                            <div class=\"shop-menu pull-right\">\n");
       out.write("                                <ul class=\"nav navbar-nav\">\n");
-      out.write("                                    <li><a href=\"\"><i class=\"fa fa-user\"></i> Account</a></li>\n");
-      out.write("                                    <li><a href=\"\"><i class=\"fa fa-star\"></i> Wishlist</a></li>\n");
+      out.write("                                    <li><a href=\"\"><i class=\"fa fa-user\"></i> Account</a></li> \n");
       out.write("                                    <li><a href=\"checkout.jsp\"><i class=\"fa fa-crosshairs\"></i> Checkout</a></li>\n");
       out.write("                                    <li><a href=\"cart.jsp\"><i class=\"fa fa-shopping-cart\"></i> Cart</a></li>\n");
       out.write("                                    <li><a href=\"login.jsp\" class=\"active\"><i class=\"fa fa-lock\"></i> Login</a></li>\n");
@@ -148,7 +143,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </div>\n");
       out.write("                            <div class=\"mainmenu pull-left\">\n");
       out.write("                                <ul class=\"nav navbar-nav collapse navbar-collapse\">\n");
-      out.write("                                    <li><a href=\"index.jsp\">Home</a></li>\n");
+      out.write("                                    <li><a href=\"home.jsp\">Home</a></li>\n");
       out.write("                                    <li class=\"dropdown\"><a href=\"#\">Shop<i class=\"fa fa-angle-down\"></i></a>\n");
       out.write("                                        <ul role=\"menu\" class=\"sub-menu\">\n");
       out.write("                                            <li><a href=\"shop.jsp\">Products</a></li>\n");
