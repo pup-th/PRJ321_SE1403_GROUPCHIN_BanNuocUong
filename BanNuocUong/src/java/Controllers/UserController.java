@@ -48,7 +48,8 @@ public class UserController extends HttpServlet {
                 String user = uDAO.checkLogin(email, pass);
                 String admin = aDAO.checkLogin(email, pass);
                 if(!admin.isEmpty()){
-                    request.getRequestDispatcher("adminManagement.jsp").forward(request, response);
+                    request.getSession().setAttribute("aMail", admin);
+                    request.getRequestDispatcher("admin.jsp").forward(request, response);
                 }else{
                     if (!user.isEmpty()) {
                         request.getSession().setAttribute("uMail", user);
@@ -64,6 +65,7 @@ public class UserController extends HttpServlet {
                     String uMail = uDAO.checkLoginByGoogle(mail);
                     String aMail = aDAO.checkLoginByGoogle(mail);
                     if(!aMail.isEmpty()){
+                        request.getSession().setAttribute("aMail", aMail);
                         request.getRequestDispatcher("admin.jsp").forward(request, response);
                     }else{
                         if (uMail.equals("")) {
@@ -127,8 +129,9 @@ public class UserController extends HttpServlet {
             if (email != null && pass != null) {
                 String user = uDAO.checkLogin(email, pass);
                 String admin = aDAO.checkLogin(email, pass);
-                if(!admin.isEmpty()){
-                    request.getRequestDispatcher("adminManagement.jsp").forward(request, response);
+                if(!admin.isEmpty()){ 
+                    request.getSession().setAttribute("aMail", admin);
+                    request.getRequestDispatcher("admin.jsp").forward(request, response);
                 }else{
                     if (!user.isEmpty()) {
                         request.getSession().setAttribute("uMail", user);
@@ -139,11 +142,13 @@ public class UserController extends HttpServlet {
                     }
                 }
             } else {
-                String mail = request.getParameter("mail");
-                if (mail != null) {
+                String mail = "";
+                if (request.getParameter("mail") != null) {
+                    mail = request.getParameter("mail");
                     String uMail = uDAO.checkLoginByGoogle(mail);
                     String aMail = aDAO.checkLoginByGoogle(mail);
                     if(!aMail.isEmpty()){
+                        request.getSession().setAttribute("aMail", aMail);
                         request.getRequestDispatcher("admin.jsp").forward(request, response);
                     }else{
                         if (uMail.equals("")) {

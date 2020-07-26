@@ -29,7 +29,7 @@ public class ItemDAO {
         this.conn = new DBConnection().getConnection();
     }
 
-    public Itemall getNameOfItem(int iId) {
+    public Itemall getNameOfItemById(int iId) {
         try {
             String sql = "SELECT * FROM `item` WHERE `iId`=?";
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -297,7 +297,7 @@ public class ItemDAO {
             pst2.setString(3, oDetail.getuMail());
             pst2.setInt(4, iId);
             pst2.setInt(5, oDetail.getQuantity());
-            pst2.setString(6, oDetail.getNote());
+            pst2.setInt(6, oDetail.getPrice());
             pst2.setDate(7, (java.sql.Date)oDetail.getOrderDate());
             return pst2.executeUpdate();
         } catch (SQLException ex) {

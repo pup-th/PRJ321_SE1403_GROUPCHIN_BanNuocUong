@@ -14,6 +14,12 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+  static {
+    _jspx_dependants = new java.util.ArrayList<String>(2);
+    _jspx_dependants.add("/header.jsp");
+    _jspx_dependants.add("/footer.jsp");
+  }
+
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_choose;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_when_test;
@@ -93,6 +99,18 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"apple-touch-icon-precomposed\" href=\"images/ico/apple-touch-icon-57-precomposed.png\">\n");
       out.write("    </head><!--/head-->\n");
       out.write("\n");
+      out.write("    <body> \n");
+      out.write("        ");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("    <head>\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <title>JSP Page</title>\n");
+      out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        ");
 
@@ -121,11 +139,10 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <a href=\"home.jsp\"><img src=\"images/home/logo.png\" alt=\"\" /></a>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
-      out.write("                        <div class=\"col-sm-8\">\n");
+      out.write("<!--                        <div class=\"col-sm-8\">\n");
       out.write("                            <div class=\"shop-menu pull-right\">\n");
       out.write("                                <ul class=\"nav navbar-nav\">\n");
-      out.write("                                    <li><a href=\"#\"><i class=\"fa fa-user\"></i> Account</a></li> \n");
-      out.write("                                    <li><a href=\"checkout.jsp\"><i class=\"fa fa-crosshairs\"></i> Checkout</a></li>\n");
+      out.write("                                    <li><a href=\"#\"><i class=\"fa fa-user\"></i> Account</a></li>  \n");
       out.write("                                    <li><a href=\"cart.jsp\"><i class=\"fa fa-shopping-cart\"></i> Cart</a></li>\n");
       out.write("                                    <li>\n");
       out.write("                                        ");
@@ -219,7 +236,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    </li>\n");
       out.write("                                </ul>\n");
       out.write("                            </div>\n");
-      out.write("                        </div>\n");
+      out.write("                        </div>-->\n");
       out.write("                    </div>\n");
       out.write("                </div>\n");
       out.write("            </div><!--/header-middle-->\n");
@@ -238,17 +255,98 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </div>\n");
       out.write("                            <div class=\"mainmenu pull-left\">\n");
       out.write("                                <ul class=\"nav navbar-nav collapse navbar-collapse\">\n");
-      out.write("                                    <li><a href=\"home.jsp\" class=\"active\">Home</a></li>\n");
-      out.write("                                    <li class=\"dropdown\"><a href=\"#\">Shop<i class=\"fa fa-angle-down\"></i></a>\n");
-      out.write("                                        <ul role=\"menu\" class=\"sub-menu\">\n");
-      out.write("                                            <li><a href=\"shop.jsp\">Products</a></li>\n");
-      out.write("                                            <li><a href=\"product-details.jsp\">Product Details</a></li> \n");
-      out.write("                                            <li><a href=\"checkout.jsp\">Checkout</a></li> \n");
-      out.write("                                            <li><a href=\"cart.jsp\">Cart</a></li> \n");
-      out.write("                                            <li><a href=\"login.jsp\">Login</a></li> \n");
-      out.write("                                        </ul>\n");
-      out.write("                                    </li>\n");
-      out.write("                                    <li><a href=\"contact-us.jsp\">Contact</a></li>\n");
+      out.write("                                    <li><a href=\"home.jsp\" class=\"active\">HOME</a></li>\n");
+      out.write("                                    <li><a href=\"cart.jsp\">CART</a></li> \n");
+      out.write("                                    <li><a href=\"contact-us.jsp\">CONTACT</a></li> \n");
+      out.write("                                        ");
+      //  c:choose
+      org.apache.taglibs.standard.tag.common.core.ChooseTag _jspx_th_c_choose_1 = (org.apache.taglibs.standard.tag.common.core.ChooseTag) _jspx_tagPool_c_choose.get(org.apache.taglibs.standard.tag.common.core.ChooseTag.class);
+      _jspx_th_c_choose_1.setPageContext(_jspx_page_context);
+      _jspx_th_c_choose_1.setParent(null);
+      int _jspx_eval_c_choose_1 = _jspx_th_c_choose_1.doStartTag();
+      if (_jspx_eval_c_choose_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                                            ");
+          //  c:when
+          org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_when_2 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _jspx_tagPool_c_when_test.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+          _jspx_th_c_when_2.setPageContext(_jspx_page_context);
+          _jspx_th_c_when_2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_choose_1);
+          _jspx_th_c_when_2.setTest(email == null);
+          int _jspx_eval_c_when_2 = _jspx_th_c_when_2.doStartTag();
+          if (_jspx_eval_c_when_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+            do {
+              out.write(" \n");
+              out.write("                                            <li class=\"dropdown\"><a href=\"#\">ACCOUNT<i class=\"fa fa-angle-down\"></i></a>\n");
+              out.write("                                                <ul role=\"menu\" class=\"sub-menu\">\n");
+              out.write("                                                    <li><a href=\"login.jsp\">Login</a></li>\n");
+              out.write("                                                    <li><a href=\"register.jsp\">Register</a></li>  \n");
+              out.write("                                                </ul>\n");
+              out.write("                                            </li>\n");
+              out.write("                                        ");
+              int evalDoAfterBody = _jspx_th_c_when_2.doAfterBody();
+              if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+                break;
+            } while (true);
+          }
+          if (_jspx_th_c_when_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+            _jspx_tagPool_c_when_test.reuse(_jspx_th_c_when_2);
+            return;
+          }
+          _jspx_tagPool_c_when_test.reuse(_jspx_th_c_when_2);
+          out.write("\n");
+          out.write("                                        ");
+          //  c:when
+          org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_when_3 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _jspx_tagPool_c_when_test.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+          _jspx_th_c_when_3.setPageContext(_jspx_page_context);
+          _jspx_th_c_when_3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_choose_1);
+          _jspx_th_c_when_3.setTest(email != null);
+          int _jspx_eval_c_when_3 = _jspx_th_c_when_3.doStartTag();
+          if (_jspx_eval_c_when_3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+            do {
+              out.write("\n");
+              out.write("                                            <li class=\"dropdown\"><a href=\"#\">");
+              out.print(s);
+              out.write("<i class=\"fa fa-angle-down\"></i></a>\n");
+              out.write("                                                <ul role=\"menu\" class=\"sub-menu\">\n");
+              out.write("                                                    <li><a href=\"cart.jsp\">Cart</a></li>\n");
+              out.write("                                                    <li><a href=\"profile.jsp\">Register</a></li>  \n");
+              out.write("                                                    <li><a href=\"home.jsp?out=1\">Sign out\n");
+              out.write("                                                        <script>\n");
+              out.write("                                                                function myFunction() {\n");
+              out.write("                                                                    gapi.auth2.getAuthInstance().disconnect();\n");
+              out.write("                                                                    location.reload();\n");
+              out.write("                                                                }\n");
+              out.write("                                                            </script>\n");
+              out.write("                                                        </a>\n");
+              out.write("                                                    </li>  \n");
+              out.write("                                                </ul>\n");
+              out.write("                                            </li>\n");
+              out.write("                                        ");
+              int evalDoAfterBody = _jspx_th_c_when_3.doAfterBody();
+              if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+                break;
+            } while (true);
+          }
+          if (_jspx_th_c_when_3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+            _jspx_tagPool_c_when_test.reuse(_jspx_th_c_when_3);
+            return;
+          }
+          _jspx_tagPool_c_when_test.reuse(_jspx_th_c_when_3);
+          out.write("\n");
+          out.write("                                    ");
+          int evalDoAfterBody = _jspx_th_c_choose_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_choose_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        _jspx_tagPool_c_choose.reuse(_jspx_th_c_choose_1);
+        return;
+      }
+      _jspx_tagPool_c_choose.reuse(_jspx_th_c_choose_1);
+      out.write(" \n");
+      out.write("                                    \n");
       out.write("                                </ul>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
@@ -260,7 +358,9 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div>\n");
       out.write("                </div>\n");
       out.write("            </div><!--/header-bottom-->\n");
-      out.write("        </header><!--/header-->\n");
+      out.write("        </header>\n");
+      out.write("    </body>\n");
+      out.write("</html>\n");
       out.write("\n");
       out.write("        <section id=\"slider\"><!--slider-->\n");
       out.write("            <div class=\"container\">\n");
@@ -282,7 +382,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                        <button type=\"button\" class=\"btn btn-default get\">Get it now</button>\n");
       out.write("                                    </div>\n");
       out.write("                                    <div class=\"col-sm-6\">\n");
-      out.write("                                        <img src=\"images/home/girl1.jpg\" class=\"girl img-responsive\" alt=\"\" />\n");
+      out.write("                                        <img src=\"background/1.jpg\" class=\"girl img-responsive\" alt=\"\" />\n");
       out.write("\n");
       out.write("                                    </div>\n");
       out.write("                                </div>\n");
@@ -344,14 +444,13 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        </div>\n");
       out.write("                    </div>\n");
       out.write("                    ");
-
                         DAO.ItemDAO it = new DAO.ItemDAO();
                         ArrayList<Entities.Items> listName = new ArrayList<>();
-                        listName =  (request.getParameter("low") != null)  ? it.sortItemByPricelowhigh() : 
-                                    (request.getParameter("high") != null) ? it.sortItemByPricehighlow() : 
-                                    (request.getParameter("az") != null)   ? it.sortItemByNameaz() : 
-                                    (request.getParameter("za") != null)   ? it.sortItemByNameza() : 
-                                                                             it.getNameOfItems();
+                        listName = (request.getParameter("low") != null) ? it.sortItemByPricelowhigh()
+                                : (request.getParameter("high") != null) ? it.sortItemByPricehighlow()
+                                : (request.getParameter("az") != null) ? it.sortItemByNameaz()
+                                : (request.getParameter("za") != null) ? it.sortItemByNameza()
+                                : it.getNameOfItems();
                     
       out.write("\n");
       out.write("                    <div class=\"col-sm-9 padding-right\">\n");
@@ -382,8 +481,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
             out.write("</h2>\n");
             out.write("                                                <p>");
             out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${item.getName()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-            out.write("</p>\n");
-            out.write("                                                <a href=\"#\" class=\"btn btn-default add-to-cart\"><i class=\"fa fa-shopping-cart\"></i>Add to cart</a>\n");
+            out.write("</p> \n");
             out.write("                                            </div>\n");
             out.write("                                            <div class=\"product-overlay\">\n");
             out.write("                                                <div class=\"overlay-content\">\n");
@@ -422,6 +520,36 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </section>\n");
+      out.write("        ");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("    <head>\n");
+      out.write("        <meta charset=\"utf-8\">\n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
+      out.write("        <meta name=\"description\" content=\"\">\n");
+      out.write("        <meta name=\"author\" content=\"\">\n");
+      out.write("        <title>Home | E-Shopper</title>\n");
+      out.write("        <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n");
+      out.write("        <link href=\"css/font-awesome.min.css\" rel=\"stylesheet\">\n");
+      out.write("        <link href=\"css/prettyPhoto.css\" rel=\"stylesheet\">\n");
+      out.write("        <link href=\"css/price-range.css\" rel=\"stylesheet\">\n");
+      out.write("        <link href=\"css/animate.css\" rel=\"stylesheet\">\n");
+      out.write("        <link href=\"css/main.css\" rel=\"stylesheet\">\n");
+      out.write("        <link href=\"css/responsive.css\" rel=\"stylesheet\">\n");
+      out.write("        <!--[if lt IE 9]>\n");
+      out.write("        <script src=\"js/html5shiv.js\"></script>\n");
+      out.write("        <script src=\"js/respond.min.js\"></script>\n");
+      out.write("        <![endif]-->       \n");
+      out.write("        <link rel=\"shortcut icon\" href=\"images/ico/favicon.ico\">\n");
+      out.write("        <link rel=\"apple-touch-icon-precomposed\" sizes=\"144x144\" href=\"images/ico/apple-touch-icon-144-precomposed.png\">\n");
+      out.write("        <link rel=\"apple-touch-icon-precomposed\" sizes=\"114x114\" href=\"images/ico/apple-touch-icon-114-precomposed.png\">\n");
+      out.write("        <link rel=\"apple-touch-icon-precomposed\" sizes=\"72x72\" href=\"images/ico/apple-touch-icon-72-precomposed.png\">\n");
+      out.write("        <link rel=\"apple-touch-icon-precomposed\" href=\"images/ico/apple-touch-icon-57-precomposed.png\">\n");
+      out.write("    </head>\n");
+      out.write("    <body>\n");
       out.write("        <footer id=\"footer\"><!--Footer-->\n");
       out.write("            <div class=\"footer-top\">\n");
       out.write("                <div class=\"container\">\n");
@@ -588,6 +716,9 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script src=\"js/price-range.js\"></script>\n");
       out.write("        <script src=\"js/jquery.prettyPhoto.js\"></script>\n");
       out.write("        <script src=\"js/main.js\"></script>\n");
+      out.write("    </body>\n");
+      out.write("</html>\n");
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>");
     } catch (Throwable t) {

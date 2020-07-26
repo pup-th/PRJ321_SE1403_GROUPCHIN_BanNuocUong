@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/BanNuocUong/web/index.jsp</file>
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/BanNuocUong/web/css/main.css</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/BanNuocUong/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/BanNuocUong/web/login.jsp</file>
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/BanNuocUong/src/java/Entities/Itemall.java</file>
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/BanNuocUong/web/login_1.jsp</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/BanNuocUong/web/cart.jsp</file>
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/BanNuocUong/web/contact-us.jsp</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/BanNuocUong/web/home.jsp</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/BanNuocUong/src/java/Controllers/UserController.java</file>
         </group>
     </open-files>
 </project-private>

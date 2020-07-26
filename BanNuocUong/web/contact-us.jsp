@@ -20,6 +20,7 @@
         
     </head>
     <body>
+        <%@include file="header.jsp" %>
 
         <h2 style="text-align:center">Our Team</h2>
         <div class="row" >
@@ -89,5 +90,6 @@
             </div>
             
         </div>
+        <%@include file="footer.jsp" %>
     </body>
 </html>

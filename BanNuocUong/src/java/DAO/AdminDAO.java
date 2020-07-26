@@ -64,7 +64,7 @@ public class AdminDAO {
             ResultSet rs = pst.executeQuery();
             ArrayList<OrderDetail> list = new ArrayList<>();
             while (rs.next()) {
-                list.add(new OrderDetail(rs.getInt("oId"), rs.getInt("payId"), rs.getString("uMail"), rs.getInt("iId"), rs.getInt("quantity"), rs.getString("note"), rs.getDate("orderDate")));
+                list.add(new OrderDetail(rs.getInt("oId"), rs.getInt("payId"), rs.getString("uMail"), rs.getInt("iId"), rs.getInt("quantity"), rs.getInt("price"), rs.getDate("orderDate")));
             }
             return list;
         } catch (SQLException ex) {

@@ -19,20 +19,20 @@ public class OrderDetail {
     private String uMail;
     private int iId;
     private int quantity;
-    private String note;
+    private int price;
     private Date orderDate;
 
-    public OrderDetail() {
-    }
-
-    public OrderDetail(int oId, int payId, String uMail, int iId, int quantity, String note, Date orderDate) {
+    public OrderDetail(int oId, int payId, String uMail, int iId, int quantity, int price, Date orderDate) {
         this.oId = oId;
         this.payId = payId;
         this.uMail = uMail;
         this.iId = iId;
         this.quantity = quantity;
-        this.note = note;
+        this.price = price;
         this.orderDate = orderDate;
+    }
+
+    public OrderDetail() {
     }
 
     public int getoId() {
@@ -75,12 +75,12 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
-    public String getNote() {
-        return note;
+    public int getPrice() {
+        return price;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public Date getOrderDate() {
@@ -90,5 +90,5 @@ public class OrderDetail {
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
-   
+    
 }
