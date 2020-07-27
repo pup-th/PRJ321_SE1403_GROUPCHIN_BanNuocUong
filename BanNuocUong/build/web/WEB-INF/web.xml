@@ -5,6 +5,10 @@
         <servlet-class>Controllers.UserController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>Controllers.AdminController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>SortController</servlet-name>
         <servlet-class>Controllers.SortController</servlet-class>
     </servlet>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/UserController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/AdminController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SortController</servlet-name>

@@ -31,7 +31,7 @@ public class ItemDAO {
 
     public Itemall getNameOfItemById(int iId) {
         try {
-            String sql = "SELECT * FROM `item` WHERE `iId`=?";
+            String sql = "SELECT * FROM item WHERE `iId`=?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, iId);
             ResultSet rs = pst.executeQuery();
@@ -64,7 +64,7 @@ public class ItemDAO {
     public ArrayList<Entities.Itemall> getAll(){
         try {
             ArrayList<Itemall> listItem = new ArrayList<>();
-            String sql = "SELECT * FROM `item` WHERE 1";
+            String sql = "SELECT * FROM item WHERE 1";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
@@ -95,25 +95,25 @@ public class ItemDAO {
     }
 
     public boolean insert(Itemall i) {
-        String sql = "INSERT INTO `item`( `tId`, `bId`, `iName`, `blockId`, `size`, "
-                + "`pId`, `outputPrice`, `orginCode`, `status`, "
-                + "`quantity`, `rId`, `discoutnStatus`, `vouId`, `taste`, `expiryDate`, `iPic`) "
+        String sql = "INSERT INTO item`(tId`, bId, iName, blockId, size, "
+                + "pId, outputPrice, orginCode, status, "
+                + "quantity, rId, discoutnStatus, vouId, taste, expiryDate, iPic) "
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1, i.gettId());
-            pst.setInt(2, i.getbId());
+            pst.setInt(1, 1);
+            pst.setInt(2, 1);
             pst.setString(3, i.getiName());
-            pst.setInt(4, i.getBlockId());
-            pst.setString(5, i.getSize());
+            pst.setInt(4, 1);
+            pst.setString(5,"M");
             pst.setInt(6, i.getpId());
-            pst.setInt(7, i.getOutputPrice());
-            pst.setString(8, i.getOriginCode());
-            pst.setInt(9, i.getStatus());
+            pst.setInt(7, 0);
+            pst.setString(8, "1");
+            pst.setInt(9, 1);
             pst.setInt(10, i.getQuantity());
-            pst.setInt(11, i.getrId());
-            pst.setInt(12, i.getDiscoutnStatus());
-            pst.setInt(13, i.getVouId());
+            pst.setInt(11, 1);
+            pst.setInt(12, 1);
+            pst.setInt(13, 1);
             pst.setString(14, i.getTaste());
             pst.setDate(15, i.getExpiryDate());
             pst.setString(16, i.getiPic());
@@ -124,31 +124,20 @@ public class ItemDAO {
         }
         return false;
     }
+    
 
-    public int updateStudent(Itemall i) {
-        String sql = "UPDATE `item` SET `tId`=?,`bId`=?,`iName`=?,`blockId`=?,`size`=?,`pId`=?,"
-                + "`outputPrice`=?,`orginCode`=?,`status`=?,`quantity`=?,`rId`=?,"
-                + "`discoutnStatus`=?,`vouId`=?,`taste`=?,`expiryDate`=?,`iPic`=? WHERE iID=?";
+    public int updateItem(int id, String name, int price, int quan, String taste, Date exDate, String pic) {
+        String sql = "UPDATE item SET iName`=?,pId`=?, quantity`=?,taste`=?,`expiryDate`=?,`iPic`=? WHERE `iId`=?";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
-
-            pst.setInt(1, i.gettId());
-            pst.setInt(2, i.getbId());
-            pst.setString(3, i.getiName());
-            pst.setInt(4, i.getBlockId());
-            pst.setString(5, i.getSize());
-            pst.setInt(6, i.getpId());
-            pst.setInt(7, i.getOutputPrice());
-            pst.setString(8, i.getOriginCode());
-            pst.setInt(9, i.getStatus());
-            pst.setInt(10, i.getQuantity());
-            pst.setInt(11, i.getrId());
-            pst.setInt(12, i.getDiscoutnStatus());
-            pst.setInt(13, i.getVouId());
-            pst.setString(14, i.getTaste());
-            pst.setDate(15, i.getExpiryDate());
-            pst.setString(16, i.getiPic());
-            pst.setInt(17, i.getiId());
+ 
+            pst.setString(1, name); 
+            pst.setInt(2, price); 
+            pst.setInt(3, quan);  
+            pst.setString(4, taste);
+            pst.setDate(5, exDate);
+            pst.setString(6, pic);
+            pst.setInt(7, id);
 
             return pst.executeUpdate();
         } catch (SQLException ex) {
@@ -158,7 +147,7 @@ public class ItemDAO {
     }
 
     public int deleteItem(int iId) {
-        String sql = "DELETE FROM `item` WHERE iId=?";
+        String sql = "DELETE FROM item WHERE iId=?";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, iId);
@@ -173,7 +162,7 @@ public class ItemDAO {
         try {
             ArrayList<Items> listName = new ArrayList<>();
 
-            String sql = "SELECT * FROM `item` WHERE 1";
+            String sql = "SELECT * FROM item WHERE 1";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
@@ -191,7 +180,7 @@ public class ItemDAO {
         try {
             ArrayList<Items> listName = new ArrayList<>();
 
-            String sql = "SELECT * FROM `item` ORDER BY `outputPrice` ASC";
+            String sql = "SELECT * FROM item ORDER BY outputPrice ASC";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
@@ -209,7 +198,7 @@ public class ItemDAO {
         try {
             ArrayList<Items> listName = new ArrayList<>();
 
-            String sql = "SELECT * FROM `item` ORDER BY `outputPrice` DESC";
+            String sql = "SELECT * FROM item ORDER BY outputPrice DESC";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
@@ -227,7 +216,7 @@ public class ItemDAO {
         try {
             ArrayList<Items> listName = new ArrayList<>();
 
-            String sql = "SELECT * FROM `item` ORDER BY `iName` ASC";
+            String sql = "SELECT * FROM item ORDER BY iName ASC";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
@@ -245,7 +234,7 @@ public class ItemDAO {
         try {
             ArrayList<Items> listName = new ArrayList<>();
 
-            String sql = "SELECT * FROM `item` ORDER BY `iName` DESC";
+            String sql = "SELECT * FROM item ORDER BY iName DESC";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
@@ -261,7 +250,7 @@ public class ItemDAO {
 
     public Entities.Items getItemById(int id) {
         try {
-            String sql = "SELECT * FROM `item` where iId=?";
+            String sql = "SELECT * FROM item where iId=?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
@@ -278,7 +267,7 @@ public class ItemDAO {
 
     public int inserTotOrder(String uMail) {
         try {
-            PreparedStatement pst1 = conn.prepareStatement("INSERT INTO `orders`(`uMail`) "
+            PreparedStatement pst1 = conn.prepareStatement("INSERT INTO orders`(uMail`) "
                     + "VALUES (?)");
             pst1.setString(1, uMail);
             return pst1.executeUpdate();
@@ -290,7 +279,7 @@ public class ItemDAO {
 
     public int inserTotOrderDetail(int iId, OrderDetail oDetail) {
         try {
-            PreparedStatement pst2 = conn.prepareStatement("INSERT INTO `orderdetail`(`oId`, `payId`, `uMail`, `iId`, `quantity`, `note`, `orderDate`)"
+            PreparedStatement pst2 = conn.prepareStatement("INSERT INTO orderdetail`(oId`, payId, uMail, iId, quantity, note, orderDate)"
                     + "VALUES (?,?,?,?,?,?,?)");
             pst2.setInt(1, oDetail.getoId());
             pst2.setInt(2, oDetail.getPayId());
@@ -308,7 +297,7 @@ public class ItemDAO {
 
     public int getoId() {
         try {
-            PreparedStatement pst = conn.prepareStatement("SELECT `oId` FROM orders WHERE oId=(SELECT max(oId) FROM orders)");
+            PreparedStatement pst = conn.prepareStatement("SELECT oId FROM orders WHERE oId=(SELECT max(oId) FROM orders)");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 return rs.getInt("oId");
@@ -318,4 +307,4 @@ public class ItemDAO {
         }
         return 0;
     }
-}
+} 

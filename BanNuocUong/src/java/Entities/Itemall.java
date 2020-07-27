@@ -33,6 +33,14 @@ public class Itemall {
 
     public Itemall() {
     }
+    public Itemall(String iName, int pId, int quantity, String taste, Date expiryDate, String iPic) {
+        this.iName = iName;
+        this.pId = pId;
+        this.quantity = quantity;
+        this.taste = taste;
+        this.expiryDate = expiryDate;
+        this.iPic = iPic;
+    }
 
     public Itemall(int iId, int tId, int bId, String iName, int blockId, String size, int pId, int outputPrice, String originCode, int status, int quantity, int rId, int discoutnStatus, int vouId, String taste, Date expiryDate, String iPic) {
         this.iId = iId;

@@ -88,7 +88,7 @@
             </div>
         </section><!--/slider-->
 
-        <section>
+        <section id="cart_items"> 
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
@@ -96,23 +96,25 @@
                             <h2>Sort</h2>
                             <div class="panel-group category-products" id="accordian"><!--category-productsr--> 
                                 <div class="panel panel-default">
+                                    <%                                        String path = request.getContextPath() + "/home.jsp";
+                                    %>
                                     <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="?az=1">A-Z</a></h4>
+                                        <h4 class="panel-title"><a href="<%=path%>?az=1">A-Z</a></h4>
                                     </div>
                                 </div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="?za=1">Z-A</a></h4>
+                                        <h4 class="panel-title"><a href="<%=path%>?za=1">Z-A</a></h4>
                                     </div>
                                 </div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="?low=1">Low -> High</a></h4>
+                                        <h4 class="panel-title"><a href="<%=path%>?low=1">Low -> High</a></h4>
                                     </div>
                                 </div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="?high=1">High -> Low</a></h4>
+                                        <h4 class="panel-title"><a href="<%=path%>?high=1">High -> Low</a></h4>
                                     </div>
                                 </div>
                             </div><!--/category-products--> 
@@ -142,7 +144,12 @@
                                                 <div class="overlay-content">
                                                     <h2>${item.getPrice()}</h2>
                                                     <p>${item.getName()}</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    <form action="CartController" method="post">
+                                                        <input type="hidden" name="cartQuantity" value="1"/>
+                                                        <input type="hidden" name="cartId" value="${item.getiId()}"/>
+                                                        <button class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                        <a href="productdetail.jsp?proid=${item.getiId()}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

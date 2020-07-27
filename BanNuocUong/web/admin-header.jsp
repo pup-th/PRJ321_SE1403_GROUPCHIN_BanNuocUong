@@ -17,7 +17,9 @@
         <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="css/theme.css" rel="stylesheet">
         <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600
+'
+            rel='stylesheet'>
     </head>
     <style>
         
@@ -26,8 +28,8 @@
         
         <%
             String admin = "";
-            if(request.getSession().getAttribute("admin") != null){
-                admin = request.getSession().getAttribute("admin").toString() ;
+            if(request.getSession().getAttribute("aMail") != null){
+                admin = request.getSession().getAttribute("aMail").toString() ;
                admin = admin.substring(0, admin.indexOf("@"));
             }
         %>
@@ -43,26 +45,7 @@
                         <%=admin%>
                     </a>
 
-                    <div class="nav-collapse collapse navbar-inverse-collapse">
-                        <ul class="nav nav-icons">
-                            <li class="active"><a href="#">
-                                    <i class="icon-envelope"></i>
-                                </a></li>
-                            <li><a href="#">
-                                    <i class="icon-eye-open"></i>
-                                </a></li>
-                            <li><a href="#">
-                                    <i class="icon-bar-chart"></i>
-                                </a></li>
-                        </ul>
-
-                        <form class="navbar-search pull-left input-append" action="#">
-                            <input type="text" class="span3">
-                            <button class="btn" type="button">
-                                <i class="icon-search"></i>
-                            </button>
-                        </form>
-
+                    <div class="nav-collapse collapse navbar-inverse-collapse">  
                         <ul class="nav pull-right">  
                             <li><a href="contact-us.jsp"> About Us </a></li>
                             <li class="nav-user dropdown">
@@ -71,6 +54,8 @@
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu"> 
+                                    <li><p><%=admin%></p></li>
+                                    <hr>
                                     <li><a href="home.jsp">Logout</a></li>
                                 </ul>
                             </li>

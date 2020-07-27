@@ -57,6 +57,15 @@ public class AdminDAO {
         }
         return "";
     }
+    public void deleteUser(String uMail) {
+        try {
+            PreparedStatement pst = conn.prepareStatement("DELETE FROM users WHERE uMail = ?");
+            pst.setString(1, uMail);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public ArrayList<Entities.OrderDetail> reportListTopUser() {
         try {
@@ -64,7 +73,7 @@ public class AdminDAO {
             ResultSet rs = pst.executeQuery();
             ArrayList<OrderDetail> list = new ArrayList<>();
             while (rs.next()) {
-                list.add(new OrderDetail(rs.getInt("oId"), rs.getInt("payId"), rs.getString("uMail"), rs.getInt("iId"), rs.getInt("quantity"), rs.getInt("price"), rs.getDate("orderDate")));
+                list.add(new OrderDetail(rs.getInt("oId"), rs.getInt("payId"), rs.getString("uMail"), rs.getInt("iId"), rs.getInt("quantity"), rs.getString("note"), rs.getDate("orderDate")));
             }
             return list;
         } catch (SQLException ex) {

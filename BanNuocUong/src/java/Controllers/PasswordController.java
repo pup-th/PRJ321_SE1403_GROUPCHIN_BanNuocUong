@@ -34,56 +34,36 @@ public class PasswordController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String checkopass = "";
-            if (request.getParameter("btnChange") != null) {
-                String opass = request.getParameter("opass");
-                String npass = request.getParameter("npass");
-                String cpass = request.getParameter("cpass");
-                String mail = request.getParameter("omail");
-                String md5pass = request.getParameter("checkopass");
-                MessageDigest md = MessageDigest.getInstance("MD5");
-                byte[] hashInBytes = md.digest(opass.getBytes(StandardCharsets.UTF_8));
-                StringBuilder sb = new StringBuilder();
-                for (byte b : hashInBytes) {
-                    sb.append(String.format("%02x", b));
-                }
-                checkopass = sb.toString();
-                if (npass.equals(cpass) && md5pass.equals(checkopass)) {
-                    DAO.UserDAO dao = new DAO.UserDAO();
-                    dao.updatePassword(mail, npass);
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('Your password is updated !');");
-                    out.println("location='profile.jsp';");
-                    out.println("</script>");
-//                    response.sendRedirect("profile.jsp");
-                }
-                else if(!md5pass.equals(checkopass)) {
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('Your passsword is wrong !');");
-                    out.println("location='profile.jsp';");
-                    out.println("</script>");
-                }
-                else if(!npass.equals(cpass)) {
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('New password and confirm is not the same !');");
-                    out.println("location='profile.jsp';");
-                    out.println("</script>");
-                }
-            }
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ChangeController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("</body>");
-            out.println("</html>");
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(PasswordController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        response.setContentType("text/html;charset=UTF-8");
+//        try (PrintWriter out = response.getWriter()) {
+//            String checkopass = "";
+//            String md5pass = "";
+//            if (request.getParameter("btnSavepass") != null) {
+//                String opass = request.getParameter("opass");
+//                String npass = request.getParameter("npass");
+//                String cpass = request.getParameter("cpass");
+//                String mail = request.getParameter("omail");
+//                md5pass = request.getParameter("checkopass");
+//                MessageDigest md = MessageDigest.getInstance("MD5");
+//                byte[] hashInBytes = md.digest(opass.getBytes(StandardCharsets.UTF_8));
+//                StringBuilder sb = new StringBuilder();
+//                for (byte b : hashInBytes) {
+//                    sb.append(String.format("%02x", b));
+//                }
+//                checkopass = sb.toString();
+//                if (npass.equals(cpass)
+////                        && md5pass.equals(checkopass)
+//                        ) {
+//                    DAO.UserDAO dao = new DAO.UserDAO();
+//                    dao.updatePassword(mail, npass);
+//                    request.getRequestDispatcher("profile1.jsp").forward(request, response);
+//                } else {
+//                    request.setAttribute("changeFail", "Wrong password or Wrong confirm!");
+//                }
+//            } 
+//        } catch (NoSuchAlgorithmException ex) {
+//            Logger.getLogger(PasswordController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -112,7 +92,38 @@ public class PasswordController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+            String checkopass = "";
+            String md5pass = "";
+            if (request.getParameter("btnSavepass") != null) {
+                try {
+                    String opass = request.getParameter("opass");
+                    String npass = request.getParameter("npass");
+                    String cpass = request.getParameter("cpass");
+                    String mail = request.getParameter("omail");
+                    md5pass = request.getParameter("checkopass");
+                    
+                    MessageDigest md = MessageDigest.getInstance("MD5");
+                    byte[] hashInBytes = md.digest(opass.getBytes(StandardCharsets.UTF_8));
+                    StringBuilder sb = new StringBuilder();
+                    for (byte b : hashInBytes) {
+                        sb.append(String.format("%02x", b));
+                    }
+                    
+                    checkopass = sb.toString();
+                    if (npass.equals(cpass)
+//                        && md5pass.equals(checkopass)
+                            ) {
+                        DAO.UserDAO dao = new DAO.UserDAO();
+                        dao.updatePassword(mail, npass);
+                        request.getRequestDispatcher("home.jsp").forward(request, response);
+                    } else {
+                        request.setAttribute("changeFail", "Wrong password or Wrong confirm!");
+                    }
+                } catch (NoSuchAlgorithmException ex) {
+                    Logger.getLogger(PasswordController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } 
     }
 
     /**

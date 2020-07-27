@@ -36,7 +36,7 @@ public class ChangeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            if (request.getParameter("btnSave") != null) {
+            if (request.getParameter("btnSaveinfo") != null) {
                 String nname = request.getParameter("nname");
                 String nphone = request.getParameter("nphone");
                 String nmail = request.getParameter("nmail");
@@ -47,59 +47,18 @@ public class ChangeController extends HttpServlet {
                 if (check != 0) {
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('Your information is saved !');");
-                    out.println("location='profile.jsp';");
+                    out.println("location='profile1.jsp';");
                     out.println("</script>");
 //                    response.sendRedirect("profile.jsp");
                 } else {
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('Cannot save your information !');");
-                    out.println("location='profile.jsp';");
+                    out.println("location='profile1.jsp';");
                     out.println("</script>");
 //                    response.sendRedirect("history.jsp");
                 }
             }
-            String checkopass="";
-            if (request.getParameter("btnChange") != null) {
-                String opass = request.getParameter("opass");
-                String npass = request.getParameter("npass");
-                String cpass = request.getParameter("cpass");
-                String mail = request.getParameter("omail");
-                String md5pass = request.getParameter("checkopass");
-                MessageDigest md = MessageDigest.getInstance("MD5");
-                byte[] hashInBytes = md.digest(opass.getBytes(StandardCharsets.UTF_8));
-                StringBuilder sb = new StringBuilder();
-                for (byte b : hashInBytes) {
-                    sb.append(String.format("%02x", b));
-                }
-                checkopass = sb.toString();
-//                if (npass.equals(cpass) && md5pass.equals(checkopass)) {
-//                    DAO.UserDAO dao = new DAO.UserDAO();
-//                    dao.updatePassword(mail, npass);
-//                    out.println("<script type=\"text/javascript\">");
-//                    out.println("alert('Your password is updated !');");
-//                    out.println("location='profile.jsp';");
-//                    out.println("</script>");
-////                    response.sendRedirect("profile.jsp");
-//                }
-            }
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ChangeController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1"+request.getParameter("checkopass")+"</h1>");
-            out.println("<h1"+checkopass+"</h1>");
-            out.println("<h1"+request.getParameter("npass")+"</h1>");
-            out.println("<h1"+request.getParameter("cpass")+"</h1>");
-            out.println("<h1"+request.getParameter("omail")+"</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(ChangeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+        }    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

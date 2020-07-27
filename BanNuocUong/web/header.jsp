@@ -72,7 +72,7 @@
                                             <li class="dropdown"><a href="#"><%=s%><i class="fa fa-angle-down"></i></a>
                                                 <ul role="menu" class="sub-menu">
                                                     <li><a href="cart.jsp">Cart</a></li>
-                                                    <li><a href="profile.jsp">Register</a></li>  
+                                                    <li><a href="profile1.jsp">Profile</a></li>  
                                                     <li><a href="home.jsp?out=1">Sign out
                                                         <script>
                                                                 function myFunction() {

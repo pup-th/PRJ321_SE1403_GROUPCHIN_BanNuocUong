@@ -34,16 +34,17 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AdminController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AdminController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            if (request.getParameter("btnInserItem") != null) {
+                int price = Integer.parseInt(request.getParameter("txtPrice"));
+                int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
+                String name = request.getParameter("txtName");
+                String taste = request.getParameter("txtTaste");
+                Date expiryDate = Date.valueOf(request.getParameter("txtexpiryDate"));
+                Itemall itemall = new Itemall(name, price, quantity, taste, expiryDate, name);
+                ItemDAO idao = new ItemDAO();
+                idao.insert(itemall);
+                request.getRequestDispatcher("admin.jsp").forward(request, response);
+            }
         }
     }
 
@@ -73,28 +74,23 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("btnOK") != null) {
-            int tId = Integer.parseInt(request.getParameter("txttId"));
-            int bId = Integer.parseInt(request.getParameter("txtbId"));
-            int blockId = Integer.parseInt(request.getParameter("txtblockId"));
-            int pId = Integer.parseInt(request.getParameter("txtpId"));
-            int outputPrice = Integer.parseInt(request.getParameter("txtoutputPrice"));
-            int vouId = Integer.parseInt(request.getParameter("txtvouId"));
-            int status = Integer.parseInt(request.getParameter("txtstatus"));
-            int quantity = Integer.parseInt(request.getParameter("txtquantity"));
-            int rId = Integer.parseInt(request.getParameter("txtrId"));
-            int discoutnStatus = Integer.parseInt(request.getParameter("txtdiscoutnStatus"));
-            String iName = request.getParameter("txtiName");
-            String size = request.getParameter("txtsize");
-            String orginCode = request.getParameter("txtorginCode");
-            String taste = request.getParameter("txttaste");
-            String iPic = request.getParameter("txtiPic");
-            Date expiryDate = Date.valueOf(request.getParameter("txtexpiryDate"));
-            Itemall itemall = new Itemall(rId, tId, bId, iName, blockId, size, pId, outputPrice, orginCode, 
-                    status, quantity, rId, discoutnStatus, vouId, taste, expiryDate, iPic);
-            ItemDAO idao = new ItemDAO();
-            idao.insert(itemall);
-            response.sendRedirect("admin.jsp");
+        ItemDAO idao = new ItemDAO();
+        if (request.getParameter("btnInserItem") != null) {
+            int price = Integer.parseInt(request.getParameter("txtPrice"));
+            int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
+            String name = request.getParameter("txtName");
+            String taste = request.getParameter("txtTaste");
+            String pic = request.getParameter("txtPic");
+            Date expiryDate = Date.valueOf(request.getParameter("txtDate"));
+            if(request.getParameter("txtid")==null){
+                Itemall itemall = new Itemall(name, price, quantity, taste, expiryDate, pic); 
+                idao.insert(itemall);
+            }else{
+                int id = Integer.parseInt(request.getParameter("txtId"));
+                idao.updateItem(id, name, price, quantity, taste, expiryDate, pic);
+                request.getRequestDispatcher("table.jsp").forward(request, response);
+            }
+            request.getRequestDispatcher("admin.jsp").forward(request, response);
         }
 
     }
