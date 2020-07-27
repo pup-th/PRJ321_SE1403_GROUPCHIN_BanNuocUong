@@ -85,7 +85,9 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link type=\"text/css\" href=\"bootstrap/css/bootstrap-responsive.min.css\" rel=\"stylesheet\">\r\n");
       out.write("        <link type=\"text/css\" href=\"css/theme.css\" rel=\"stylesheet\">\r\n");
       out.write("        <link type=\"text/css\" href=\"images/icons/css/font-awesome.css\" rel=\"stylesheet\">\r\n");
-      out.write("        <link type=\"text/css\" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>\r\n");
+      out.write("        <link type=\"text/css\" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600\r\n");
+      out.write("'\r\n");
+      out.write("            rel='stylesheet'>\r\n");
       out.write("    </head>\r\n");
       out.write("    <style>\r\n");
       out.write("        \r\n");
@@ -95,8 +97,8 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        ");
 
             String admin = "";
-            if(request.getSession().getAttribute("admin") != null){
-                admin = request.getSession().getAttribute("admin").toString() ;
+            if(request.getSession().getAttribute("aMail") != null){
+                admin = request.getSession().getAttribute("aMail").toString() ;
                admin = admin.substring(0, admin.indexOf("@"));
             }
         
@@ -115,26 +117,7 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("                    </a>\r\n");
       out.write("\r\n");
-      out.write("                    <div class=\"nav-collapse collapse navbar-inverse-collapse\">\r\n");
-      out.write("                        <ul class=\"nav nav-icons\">\r\n");
-      out.write("                            <li class=\"active\"><a href=\"#\">\r\n");
-      out.write("                                    <i class=\"icon-envelope\"></i>\r\n");
-      out.write("                                </a></li>\r\n");
-      out.write("                            <li><a href=\"#\">\r\n");
-      out.write("                                    <i class=\"icon-eye-open\"></i>\r\n");
-      out.write("                                </a></li>\r\n");
-      out.write("                            <li><a href=\"#\">\r\n");
-      out.write("                                    <i class=\"icon-bar-chart\"></i>\r\n");
-      out.write("                                </a></li>\r\n");
-      out.write("                        </ul>\r\n");
-      out.write("\r\n");
-      out.write("                        <form class=\"navbar-search pull-left input-append\" action=\"#\">\r\n");
-      out.write("                            <input type=\"text\" class=\"span3\">\r\n");
-      out.write("                            <button class=\"btn\" type=\"button\">\r\n");
-      out.write("                                <i class=\"icon-search\"></i>\r\n");
-      out.write("                            </button>\r\n");
-      out.write("                        </form>\r\n");
-      out.write("\r\n");
+      out.write("                    <div class=\"nav-collapse collapse navbar-inverse-collapse\">  \r\n");
       out.write("                        <ul class=\"nav pull-right\">  \r\n");
       out.write("                            <li><a href=\"contact-us.jsp\"> About Us </a></li>\r\n");
       out.write("                            <li class=\"nav-user dropdown\">\r\n");
@@ -143,6 +126,10 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    <b class=\"caret\"></b>\r\n");
       out.write("                                </a>\r\n");
       out.write("                                <ul class=\"dropdown-menu\"> \r\n");
+      out.write("                                    <li><p>");
+      out.print(admin);
+      out.write("</p></li>\r\n");
+      out.write("                                    <hr>\r\n");
       out.write("                                    <li><a href=\"home.jsp\">Logout</a></li>\r\n");
       out.write("                                </ul>\r\n");
       out.write("                            </li>\r\n");
@@ -196,29 +183,30 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(numberOrder);
       out.write("</b>\r\n");
       out.write("                            <p class=\"text-muted\">\r\n");
-      out.write("                                Orders</p>\r\n");
+      out.write("                                All Orders</p>\r\n");
       out.write("                        </a><a href=\"#\" class=\"btn-box big span4\"><i class=\"icon-user\"></i><b>");
       out.print(numberUser);
       out.write("</b>\r\n");
       out.write("                            <p class=\"text-muted\">\r\n");
-      out.write("                                Users</p>\r\n");
+      out.write("                                All Users</p>\r\n");
       out.write("                        </a><a href=\"#\" class=\"btn-box big span4\"><i class=\"icon-money\"></i><b>");
       out.print(numberMoney);
       out.write(" VND</b>\r\n");
       out.write("                            <p class=\"text-muted\">\r\n");
-      out.write("                                Money</p>\r\n");
+      out.write("                                All Money</p>\r\n");
       out.write("                        </a>\r\n");
       out.write("                    </div>\r\n");
+      out.write("                            <br>\r\n");
       out.write("                    <div class=\"btn-box-row row-fluid\">\r\n");
       out.write("                        <a href=\"table.jsp\" class=\"btn-box big span4\"><i class=\" icon-envelope\"></i><b> </b>\r\n");
       out.write("                            <p class=\"text-muted\">\r\n");
-      out.write("                                Report</p>\r\n");
+      out.write("                                Reports</p>\r\n");
       out.write("                        </a><a href=\"list-user.jsp\" class=\"btn-box big span4\"><i class=\"icon-group\"></i><b> </b>\r\n");
       out.write("                            <p class=\"text-muted\">\r\n");
       out.write("                                 List Users</p>\r\n");
       out.write("                        </a><a href=\"form.jsp\" class=\"btn-box big span4\"><i class=\"icon-exchange\"></i><b> </b>\r\n");
       out.write("                            <p class=\"text-muted\">\r\n");
-      out.write("                                insert</p>\r\n");
+      out.write("                                insert Item</p>\r\n");
       out.write("                        </a>\r\n");
       out.write("                    </div> \r\n");
       out.write("                </div>  \r\n");

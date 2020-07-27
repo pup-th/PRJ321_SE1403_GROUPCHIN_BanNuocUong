@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2020 at 04:06 AM
+-- Generation Time: Jul 27, 2020 at 08:30 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -40,6 +40,7 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`aMail`, `aPassword`) VALUES
 ('phuc@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
 ('qui@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+('tranhoangphuc28102000@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
 ('tri@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
 
 -- --------------------------------------------------------
@@ -139,13 +140,14 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`iId`, `tId`, `bId`, `iName`, `blockId`, `size`, `pId`, `outputPrice`, `orginCode`, `status`, `quantity`, `rId`, `discoutnStatus`, `vouId`, `taste`, `expiryDate`, `iPic`) VALUES
-(1, 1, 1, 'Sting dau', 1, 'M', 1, 7000, '1', 1, 100, 1, 0, 1, 'Tang luc', '2021-12-23', 'stingdau.jpg'),
-(3, 1, 1, 'Sting vang', 1, 'M', 1, 7000, '1', 1, 100, 1, 0, 1, 'tang luc', '2021-12-23', 'stingvang.jpg'),
-(5, 1, 1, 'Khong do', 1, 'M', 2, 8000, '1', 1, 100, 1, 0, 1, 'Tra xanh', '2021-12-23', 'khongdo.jpg'),
-(6, 1, 1, 'C2', 1, 'M', 3, 6000, '1', 1, 100, 1, 0, 1, 'Tra xanh', '2021-12-23', 'c2.jpg'),
-(7, 1, 1, 'Dr.Thanh', 1, 'M', 1, 9000, '1', 1, 100, 1, 0, 1, 'Tra', '2021-12-23', 'drthanh.jpg'),
-(8, 1, 1, 'Number One', 1, 'M', 1, 9000, '1', 1, 100, 1, 0, 1, 'Tang luc', '2021-12-23', 'number1.jpg'),
-(9, 1, 1, 'Revive', 1, 'M', 1, 9000, '1', 1, 100, 1, 0, 1, 'Tang luc', '2021-12-23', 'revive.jpg');
+(1, 1, 1, 'Sting dau', 1, 'M', 7000, 7000, '1', 1, 100, 1, 0, 1, 'Tang luc', '2021-12-23', 'stingdau.jpg'),
+(3, 1, 1, 'Sting vang', 1, 'M', 7000, 7000, '1', 1, 100, 1, 0, 1, 'tang luc', '2021-12-23', 'stingvang.jpg'),
+(5, 1, 1, 'Khong do', 1, 'M', 7000, 7000, '1', 1, 100, 1, 0, 1, 'Tra xanh', '2021-12-23', 'khongdo.jpg'),
+(6, 1, 1, 'C2', 1, 'M', 6000, 6000, '1', 1, 100, 1, 0, 1, 'Tra xanh', '2021-12-23', 'c2.jpg'),
+(7, 1, 1, 'Dr.Thanh', 1, 'M', 9000, 9000, '1', 1, 100, 1, 0, 1, 'Tra', '2021-12-23', 'drthanh.jpg'),
+(8, 1, 1, 'Number One', 1, 'M', 9000, 9000, '1', 1, 100, 1, 0, 1, 'Tang luc', '2021-12-23', 'number1.jpg'),
+(9, 1, 1, 'Revive', 1, 'M', 9000, 9000, '1', 1, 100, 1, 0, 1, 'Tang luc', '2021-12-23', 'revive.jpg'),
+(19, 1, 1, '1', 1, 'M', 1, 0, '1', 1, 1, 1, 1, 1, '1', '2020-07-15', '1');
 
 -- --------------------------------------------------------
 
@@ -207,21 +209,21 @@ CREATE TABLE `orderdetail` (
   `uMail` varchar(100) NOT NULL,
   `iId` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `note` varchar(50) NOT NULL,
-  `orderDate` date NOT NULL
+  `price` int(11) NOT NULL,
+  `orderDate` date NOT NULL,
+  `note` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Bảng lưu trữ thông tin của order';
 
 --
 -- Dumping data for table `orderdetail`
 --
 
-INSERT INTO `orderdetail` (`iDetailIndex`, `oId`, `payId`, `uMail`, `iId`, `quantity`, `note`, `orderDate`) VALUES
-(1, 1, 1, 'user2@gmail.com', 1, 5, '', '2020-01-14'),
-(3, 3, 1, 'user3@gmail.com', 6, 5, '', '2020-01-14'),
-(5, 2, 1, 'user1@gmail.com', 1, 3, '', '2020-01-14'),
-(6, 3, 1, 'phucthce140628@fpt.edu.vn', 3, 1, '', '2020-07-24'),
-(7, 3, 1, 'phucthce140628@fpt.edu.vn', 3, 1, '', '2020-07-24'),
-(8, 3, 1, 'phucthce140628@fpt.edu.vn', 3, 1, '', '2020-07-25');
+INSERT INTO `orderdetail` (`iDetailIndex`, `oId`, `payId`, `uMail`, `iId`, `quantity`, `price`, `orderDate`, `note`) VALUES
+(7, 9, 1, 'phucthce140628@fpt.edu.vn', 1, 4, 7000, '2020-07-28', ''),
+(8, 10, 1, 'phucthce140628@fpt.edu.vn', 5, 1, 7000, '2020-07-28', ''),
+(9, 11, 1, 'a@gmail.com', 3, 5, 7000, '2020-07-28', ''),
+(10, 12, 1, 'b@gmail.com', 5, 6, 7000, '2020-07-28', ''),
+(11, 13, 1, 'b@gmail.com', 7, 5, 9000, '2020-07-28', '');
 
 -- --------------------------------------------------------
 
@@ -231,19 +233,19 @@ INSERT INTO `orderdetail` (`iDetailIndex`, `oId`, `payId`, `uMail`, `iId`, `quan
 
 CREATE TABLE `orders` (
   `oId` int(11) NOT NULL,
-  `uMail` varchar(100) NOT NULL,
-  `iId` int(11) NOT NULL,
-  `orderDate` date NOT NULL
+  `uMail` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`oId`, `uMail`, `iId`, `orderDate`) VALUES
-(1, 'user1@gmail.com', 1, '2020-01-14'),
-(2, 'user3@gmail.com', 2, '2020-01-14'),
-(3, 'user2@gmail.com', 3, '2020-01-14');
+INSERT INTO `orders` (`oId`, `uMail`) VALUES
+(9, 'phucthce140628@fpt.edu.vn'),
+(10, 'phucthce140628@fpt.edu.vn'),
+(11, 'a@gmail.com'),
+(12, 'b@gmail.com'),
+(13, 'b@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -329,14 +331,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uMail`, `uPassword`, `uName`, `uPhone`, `uAddress`) VALUES
-('a@gmai.com', 'e10adc3949ba59abbe56e057f20f883e', 'phuc', '0987654321', 'vl'),
-('b@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '1', '1', '1'),
-('c@gmail.com', '1bbd886460827015e5d605ed44252251', '1', '1111111111', '11'),
-('nva@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Hoang Phuc', '0987654321', 'VL'),
-('phucthce140628@fpt.edu.vn', 'a384b6463fc216a5f8ecb6670f86456a', 'Hoang Qui', '0987654321', 'Tra Vinh'),
+('a@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'phuc', '0987654321', 'vl'),
+('b@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Hoang', '0987654321', 'HG'),
+('c@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Tran', '1111111111', 'VL'),
+('nva@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Hoang Phuc', '0987654321', 'VL'),
+('phucthce140628@fpt.edu.vn', 'e10adc3949ba59abbe56e057f20f883e', 'Hoang Qui', '0987654321', 'Tra Vinh'),
 ('user1@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Nguyen Van A', '0123456789', 'Can Tho'),
-('user2@gmail.com', '415ae01d78998c8191a416ddd8cabe33', 'Tran Thi B', '0321654897', 'An Giang'),
-('user3@gmail.com', '456ab20472cd48e1e621f3e8ac0f3eb1', 'Huynh Van C', '0147258963', 'Soc Trang');
+('user2@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Nguyen Van B', '0123456789', 'Can Tho'),
+('user3@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Nguyen Thi C', '0123456789', 'Hau Giang');
 
 -- --------------------------------------------------------
 
@@ -498,7 +500,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `iId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Item Id', AUTO_INCREMENT=10;
+  MODIFY `iId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Item Id', AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `itemcomment`
@@ -516,13 +518,13 @@ ALTER TABLE `itemtype`
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  MODIFY `iDetailIndex` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `iDetailIndex` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `oId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `oId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `payment`

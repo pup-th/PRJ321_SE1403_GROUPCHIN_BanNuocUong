@@ -212,7 +212,7 @@ public class UserDAO {
                     rs.getString("uMail"),
                     rs.getInt("iId"),
                     rs.getInt("quantity"),
-                    rs.getString("note"),
+                    rs.getInt("price"),
                     rs.getDate("orderDate")));
         }
         return list;
@@ -248,11 +248,11 @@ public class UserDAO {
 
     public int getPriceItemById(int id) {
         try {
-            PreparedStatement pst = conn.prepareStatement("SELECT `outputPrice` FROM `item` WHERE `iId`=?");
+            PreparedStatement pst = conn.prepareStatement("SELECT `pId` FROM `item` WHERE `iId`=?");
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                return rs.getInt("outputPrice");
+                return rs.getInt("pId");
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -13,7 +13,7 @@
     <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edmin</title>
+        <title>Admin</title>
         <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -36,25 +36,26 @@
                     <div class="btn-box-row row-fluid">
                         <a href="#" class="btn-box big span4"><i class=" icon-random"></i><b><%=numberOrder%></b>
                             <p class="text-muted">
-                                Orders</p>
+                                All Orders</p>
                         </a><a href="#" class="btn-box big span4"><i class="icon-user"></i><b><%=numberUser%></b>
                             <p class="text-muted">
-                                Users</p>
+                                All Users</p>
                         </a><a href="#" class="btn-box big span4"><i class="icon-money"></i><b><%=numberMoney%> VND</b>
                             <p class="text-muted">
-                                Money</p>
+                                All Money</p>
                         </a>
                     </div>
+                            <br>
                     <div class="btn-box-row row-fluid">
                         <a href="table.jsp" class="btn-box big span4"><i class=" icon-envelope"></i><b> </b>
                             <p class="text-muted">
-                                Report</p>
+                                Reports</p>
                         </a><a href="list-user.jsp" class="btn-box big span4"><i class="icon-group"></i><b> </b>
                             <p class="text-muted">
                                  List Users</p>
                         </a><a href="form.jsp" class="btn-box big span4"><i class="icon-exchange"></i><b> </b>
                             <p class="text-muted">
-                                insert</p>
+                                insert Item</p>
                         </a>
                     </div> 
                 </div>  

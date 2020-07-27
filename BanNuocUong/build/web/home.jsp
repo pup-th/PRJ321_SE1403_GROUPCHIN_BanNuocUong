@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Home | E-Shopper</title>
+        <title>HOME | GROUPCHIN</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -41,7 +41,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                        <div id="slider-carousel"   class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
                                 <li data-target="#slider-carousel" data-slide-to="1"></li>
@@ -51,25 +51,33 @@
                             <div class="carousel-inner">
                                 <div class="item active">
                                     <div class="col-sm-6">
-                                        <h1><span>E</span>-SHOPPER</h1>
-                                        <h2>Free E-Commerce Template</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <button type="button" class="btn btn-default get">Get it now</button>
+                                        <h1><span>GROUP</span>CHIN</h1>
+                                        <h2>Pepsi</h2>
+                                        <p>Wellcome to our shop</p> 
                                     </div>
                                     <div class="col-sm-6">
-                                        <img src="background/1.jpg" class="girl img-responsive" alt="" />
+                                        <img src="douong/pepsi.jpg" class="girl img-responsive" alt="" />
 
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="col-sm-6">
-                                        <h1><span>E</span>-SHOPPER</h1>
-                                        <h2>100% Responsive Design</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <button type="button" class="btn btn-default get">Get it now</button>
+                                        <h1><span>GROUP</span>CHIN</h1>
+                                        <h2>Number 1</h2>
+                                        <p>Wellcome to our shop</p> 
                                     </div>
                                     <div class="col-sm-6">
-                                        <img src="background/1.jpg" class="girl img-responsive" alt="" />
+                                        <img src="douong/number1.jpg" class="girl img-responsive" alt="" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-sm-6">
+                                        <h1><span>GROUP</span>CHIN</h1>
+                                        <h2>Dr Thanh</h2>
+                                        <p>Wellcome to our shop</p> 
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <img src="douong/drthanh.jpg" class="girl img-responsive" alt="" />
                                     </div>
                                 </div>
 

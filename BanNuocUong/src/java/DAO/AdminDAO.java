@@ -69,11 +69,11 @@ public class AdminDAO {
 
     public ArrayList<Entities.OrderDetail> reportListTopUser() {
         try {
-            PreparedStatement pst = conn.prepareStatement("SELECT COUNT(`oId`)as oId,`payId`, `uMail`,`iId`, SUM(`quantity`)as quantity,`note`,`orderDate` FROM orderdetail GROUP BY `uMail` ORDER BY COUNT(`oId`) DESC");
+            PreparedStatement pst = conn.prepareStatement("SELECT COUNT(`oId`)as oId,`payId`, `uMail`,`iId`, SUM(`quantity`)as quantity,`price` * sum(quantity) as price,`orderDate` FROM orderdetail GROUP BY `uMail` ORDER BY COUNT(`oId`) DESC ");
             ResultSet rs = pst.executeQuery();
             ArrayList<OrderDetail> list = new ArrayList<>();
             while (rs.next()) {
-                list.add(new OrderDetail(rs.getInt("oId"), rs.getInt("payId"), rs.getString("uMail"), rs.getInt("iId"), rs.getInt("quantity"), rs.getString("note"), rs.getDate("orderDate")));
+                list.add(new OrderDetail(rs.getInt("oId"), rs.getInt("payId"), rs.getString("uMail"), rs.getInt("iId"), rs.getInt("quantity"), rs.getInt("price"), rs.getDate("orderDate")));
             }
             return list;
         } catch (SQLException ex) {
@@ -83,7 +83,7 @@ public class AdminDAO {
     }
     public ArrayList<Entities.Items> reportListTopDrink() {
         try {
-            PreparedStatement pst = conn.prepareStatement("SELECT `iId`, sum(`quantity`) AS quantity FROM `orderdetail` WHERE 1 GROUP BY `iId`");
+            PreparedStatement pst = conn.prepareStatement("SELECT `iId`, sum(`quantity`) AS quantity FROM `orderdetail` WHERE 1 GROUP BY `iId` ORDER BY `quantity` DESC ");
             ResultSet rs = pst.executeQuery();
             ItemDAO iDAO = new ItemDAO();
             ArrayList<Items> list = new ArrayList<>();

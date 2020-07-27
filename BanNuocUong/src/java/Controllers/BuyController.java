@@ -85,7 +85,7 @@ public class BuyController extends HttpServlet {
                 int oId = itemdao.getoId();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String note="";
-                Entities.OrderDetail orderdetail = new OrderDetail(oId, 1, mail, i, map.get(i), note, Date.valueOf(java.time.LocalDate.now()));
+                Entities.OrderDetail orderdetail = new OrderDetail(oId, 1, mail, i, map.get(i), itemdao.getNameOfItemById(i).getpId(), Date.valueOf(java.time.LocalDate.now()));
                 itemdao.inserTotOrderDetail(i, orderdetail); 
             }
             request.getSession().removeAttribute("hashMapItemCart");

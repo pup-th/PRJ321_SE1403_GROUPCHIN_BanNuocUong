@@ -51,6 +51,18 @@ public class OrderDetail {
         this.orderDate = orderDate;
     }
 
+    public OrderDetail(int oId, int payId, String uMail, int iId, int quantity, int price, Date orderDate) {
+        this.oId = oId;
+        this.payId = payId;
+        this.uMail = uMail;
+        this.iId = iId;
+        this.quantity = quantity;
+        this.price = price;
+        this.orderDate = orderDate;
+    }
+    
+    
+
     public int getoId() {
         return oId;
     }

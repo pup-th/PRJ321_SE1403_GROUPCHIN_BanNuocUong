@@ -19,10 +19,20 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_dependants.add("/admin-header.jsp");
   }
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_if_test;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_if_test = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_if_test.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -49,6 +59,7 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -85,7 +96,9 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link type=\"text/css\" href=\"bootstrap/css/bootstrap-responsive.min.css\" rel=\"stylesheet\">\r\n");
       out.write("        <link type=\"text/css\" href=\"css/theme.css\" rel=\"stylesheet\">\r\n");
       out.write("        <link type=\"text/css\" href=\"images/icons/css/font-awesome.css\" rel=\"stylesheet\">\r\n");
-      out.write("        <link type=\"text/css\" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>\r\n");
+      out.write("        <link type=\"text/css\" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600\r\n");
+      out.write("'\r\n");
+      out.write("            rel='stylesheet'>\r\n");
       out.write("    </head>\r\n");
       out.write("    <style>\r\n");
       out.write("        \r\n");
@@ -95,8 +108,8 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        ");
 
             String admin = "";
-            if(request.getSession().getAttribute("admin") != null){
-                admin = request.getSession().getAttribute("admin").toString() ;
+            if(request.getSession().getAttribute("aMail") != null){
+                admin = request.getSession().getAttribute("aMail").toString() ;
                admin = admin.substring(0, admin.indexOf("@"));
             }
         
@@ -115,26 +128,7 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("                    </a>\r\n");
       out.write("\r\n");
-      out.write("                    <div class=\"nav-collapse collapse navbar-inverse-collapse\">\r\n");
-      out.write("                        <ul class=\"nav nav-icons\">\r\n");
-      out.write("                            <li class=\"active\"><a href=\"#\">\r\n");
-      out.write("                                    <i class=\"icon-envelope\"></i>\r\n");
-      out.write("                                </a></li>\r\n");
-      out.write("                            <li><a href=\"#\">\r\n");
-      out.write("                                    <i class=\"icon-eye-open\"></i>\r\n");
-      out.write("                                </a></li>\r\n");
-      out.write("                            <li><a href=\"#\">\r\n");
-      out.write("                                    <i class=\"icon-bar-chart\"></i>\r\n");
-      out.write("                                </a></li>\r\n");
-      out.write("                        </ul>\r\n");
-      out.write("\r\n");
-      out.write("                        <form class=\"navbar-search pull-left input-append\" action=\"#\">\r\n");
-      out.write("                            <input type=\"text\" class=\"span3\">\r\n");
-      out.write("                            <button class=\"btn\" type=\"button\">\r\n");
-      out.write("                                <i class=\"icon-search\"></i>\r\n");
-      out.write("                            </button>\r\n");
-      out.write("                        </form>\r\n");
-      out.write("\r\n");
+      out.write("                    <div class=\"nav-collapse collapse navbar-inverse-collapse\">  \r\n");
       out.write("                        <ul class=\"nav pull-right\">  \r\n");
       out.write("                            <li><a href=\"contact-us.jsp\"> About Us </a></li>\r\n");
       out.write("                            <li class=\"nav-user dropdown\">\r\n");
@@ -143,6 +137,10 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    <b class=\"caret\"></b>\r\n");
       out.write("                                </a>\r\n");
       out.write("                                <ul class=\"dropdown-menu\"> \r\n");
+      out.write("                                    <li><p>");
+      out.print(admin);
+      out.write("</p></li>\r\n");
+      out.write("                                    <hr>\r\n");
       out.write("                                    <li><a href=\"home.jsp\">Logout</a></li>\r\n");
       out.write("                                </ul>\r\n");
       out.write("                            </li>\r\n");
@@ -187,7 +185,7 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
             String pic = "";
             int price = 0;
             int quan = 0;
-            int id = 0;
+            int id = -1;
             Date exDate = null;
             if (request.getParameter("update") != null) {
                 Itemall itemAll = iDAO.getNameOfItemById(Integer.parseInt(request.getParameter("update")));
@@ -198,7 +196,7 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
                 taste = itemAll.getTaste();
                 exDate = itemAll.getExpiryDate();
                 pic = itemAll.getiPic();
-            }
+            } 
         
       out.write("\r\n");
       out.write("        <div class=\"span9\">\r\n");
@@ -210,21 +208,44 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"module-body\">  \r\n");
       out.write("                        <form class=\"form-horizontal row-fluid\" action=\"AdminController\" method=\"post\"> \r\n");
-      out.write("                            <div class=\"control-group\">\r\n");
-      out.write("                                <label class=\"control-label\" for=\"basicinput\">Id</label>\r\n");
-      out.write("                                <div class=\"controls\">\r\n");
-      out.write("                                    <input type=\"text\" name=\"txtId\" value=\"");
-      out.print(id);
-      out.write("\" id=\"basicinput\" placeholder=\"Type something here...\" class=\"span8\" disabled=\"\">\r\n");
-      out.write("                                    <span class=\"help-inline\"></span>\r\n");
-      out.write("                                </div>\r\n");
-      out.write("                            </div>  \r\n");
+      out.write("                            ");
+      //  c:if
+      org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+      _jspx_th_c_if_0.setPageContext(_jspx_page_context);
+      _jspx_th_c_if_0.setParent(null);
+      _jspx_th_c_if_0.setTest(id != -1);
+      int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
+      if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("                                <div class=\"control-group\">\r\n");
+          out.write("                                    <label class=\"control-label\" for=\"basicinput\">ID</label>\r\n");
+          out.write("                                    <div class=\"controls\">\r\n");
+          out.write("                                        <input type=\"text\" name=\"txtId\" value=\"");
+          out.print(id);
+          out.write("\" id=\"basicinput\" placeholder=\"Type something here...\" class=\"span8\" disabled=\"\">\r\n");
+          out.write("                                        <span class=\"help-inline\"></span>\r\n");
+          out.write("                                    </div>\r\n");
+          out.write("                                </div> \r\n");
+          out.write("                            ");
+          int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_if_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+        return;
+      }
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+      out.write("\r\n");
+      out.write("                             \r\n");
       out.write("                            <div class=\"control-group\">\r\n");
       out.write("                                <label class=\"control-label\" for=\"basicinput\">Name of Item</label>\r\n");
       out.write("                                <div class=\"controls\">\r\n");
       out.write("                                    <input type=\"text\" name=\"txtName\" value=\"");
       out.print(name);
-      out.write("\" id=\"basicinput\" placeholder=\"Type something here...\" class=\"span8\" required>\r\n");
+      out.write("\" id=\"basicinput\" placeholder=\"Input name of item\" class=\"span8\" required>\r\n");
       out.write("                                    <span class=\"help-inline\"></span>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div>  \r\n");
@@ -235,7 +256,7 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    <div class=\"input-append\">\r\n");
       out.write("                                        <input type=\"text\" name=\"txtPrice\" value=\"");
       out.print(price);
-      out.write("\"  placeholder=\"5.000\" required pattern=\"\\d+\" class=\"span8\"><span class=\"add-on\">$</span>\r\n");
+      out.write("\"  placeholder=\"5000\" required pattern=\"\\d+\" class=\"span8\"><span class=\"add-on\">$</span>\r\n");
       out.write("                                    </div>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div>\r\n");
@@ -245,7 +266,7 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <div class=\"controls\">\r\n");
       out.write("                                    <input type=\"text\"  name=\"txtQuantity\" value=\"");
       out.print(quan);
-      out.write("\" id=\"basicinput\" pattern=\"\\d+\" placeholder=\"Type something here...\" class=\"span8\" required>\r\n");
+      out.write("\" id=\"basicinput\" pattern=\"\\d+\" placeholder=\"Input quantity\" class=\"span8\" required>\r\n");
       out.write("                                    <span class=\"help-inline\"></span>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div>\r\n");
@@ -254,7 +275,7 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <div class=\"controls\">\r\n");
       out.write("                                    <input type=\"text\"  name=\"txtTaste\" value=\"");
       out.print(taste);
-      out.write("\" id=\"basicinput\" placeholder=\"Type something here...\" class=\"span8\" required>\r\n");
+      out.write("\" id=\"basicinput\" placeholder=\"Input taste\" class=\"span8\" required>\r\n");
       out.write("                                    <span class=\"help-inline\"></span>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div> \r\n");
@@ -263,7 +284,7 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <div class=\"controls\">\r\n");
       out.write("                                    <input type=\"date\"  name=\"txtDate\" value=\"");
       out.print(exDate);
-      out.write("\" id=\"basicinput\" placeholder=\"Type something here...\" class=\"span8\" required>\r\n");
+      out.write("\" id=\"basicinput\" placeholder=\"Choose expiry date\" class=\"span8\" required>\r\n");
       out.write("                                    <span class=\"help-inline\"></span>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div> \r\n");
@@ -273,13 +294,13 @@ public final class form_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <div class=\"controls\">\r\n");
       out.write("                                    <input type=\"text\" name=\"txtPic\"  value=\"");
       out.print(pic);
-      out.write("\" id=\"basicinput\" placeholder=\"Type something here...\" class=\"span8\" required>\r\n");
+      out.write("\" id=\"basicinput\" placeholder=\"Input picture name include extention\" class=\"span8\" required>\r\n");
       out.write("                                    <span class=\"help-inline\"></span>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div> \r\n");
       out.write("                            <div class=\"control-group\">\r\n");
       out.write("                                <div class=\"controls\">\r\n");
-      out.write("                                    <button type=\"submit\" class=\"btn\" name=\"btnInserItem\">Insert</button>\r\n");
+      out.write("                                    <input type=\"submit\" class=\"btn\" name=\"btnInserItem\" value=\"Insert\">\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </form>\r\n");

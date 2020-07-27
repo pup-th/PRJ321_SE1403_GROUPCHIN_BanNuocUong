@@ -8,12 +8,13 @@
 <%@page import="Entities.Itemall"%>
 <%@page import="DAO.ItemDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin</title>
+        <title>INSERT | ADMIN</title>
         <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -29,7 +30,7 @@
             String pic = "";
             int price = 0;
             int quan = 0;
-            int id = 0;
+            int id = -1;
             Date exDate = null;
             if (request.getParameter("update") != null) {
                 Itemall itemAll = iDAO.getNameOfItemById(Integer.parseInt(request.getParameter("update")));
@@ -40,7 +41,7 @@
                 taste = itemAll.getTaste();
                 exDate = itemAll.getExpiryDate();
                 pic = itemAll.getiPic();
-            }
+            } 
         %>
         <div class="span9">
             <div class="content">
@@ -51,17 +52,20 @@
                     </div>
                     <div class="module-body">  
                         <form class="form-horizontal row-fluid" action="AdminController" method="post"> 
-                            <div class="control-group">
-                                <label class="control-label" for="basicinput">Id</label>
-                                <div class="controls">
-                                    <input type="text" name="txtId" value="<%=id%>" id="basicinput" placeholder="Type something here..." class="span8" disabled="">
-                                    <span class="help-inline"></span>
-                                </div>
-                            </div>  
+                            <c:if test="<%=id != -1%>">
+                                <div class="control-group">
+                                    <label class="control-label" for="basicinput">ID</label>
+                                    <div class="controls">
+                                        <input type="text" name="txtId" value="<%=id%>" id="basicinput" placeholder="Type something here..." class="span8" disabled="">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div> 
+                            </c:if>
+                             
                             <div class="control-group">
                                 <label class="control-label" for="basicinput">Name of Item</label>
                                 <div class="controls">
-                                    <input type="text" name="txtName" value="<%=name%>" id="basicinput" placeholder="Type something here..." class="span8" required>
+                                    <input type="text" name="txtName" value="<%=name%>" id="basicinput" placeholder="Input name of item" class="span8" required>
                                     <span class="help-inline"></span>
                                 </div>
                             </div>  
@@ -70,7 +74,7 @@
                                 <label class="control-label" for="basicinput">Price</label>
                                 <div class="controls">
                                     <div class="input-append">
-                                        <input type="text" name="txtPrice" value="<%=price%>"  placeholder="5.000" required pattern="\d+" class="span8"><span class="add-on">$</span>
+                                        <input type="text" name="txtPrice" value="<%=price%>"  placeholder="5000" required pattern="\d+" class="span8"><span class="add-on">$</span>
                                     </div>
                                 </div>
                             </div>
@@ -78,21 +82,21 @@
                             <div class="control-group">
                                 <label class="control-label" for="basicinput">Quantity</label>
                                 <div class="controls">
-                                    <input type="text"  name="txtQuantity" value="<%=quan%>" id="basicinput" pattern="\d+" placeholder="Type something here..." class="span8" required>
+                                    <input type="text"  name="txtQuantity" value="<%=quan%>" id="basicinput" pattern="\d+" placeholder="Input quantity" class="span8" required>
                                     <span class="help-inline"></span>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="basicinput">Taste</label>
                                 <div class="controls">
-                                    <input type="text"  name="txtTaste" value="<%=taste%>" id="basicinput" placeholder="Type something here..." class="span8" required>
+                                    <input type="text"  name="txtTaste" value="<%=taste%>" id="basicinput" placeholder="Input taste" class="span8" required>
                                     <span class="help-inline"></span>
                                 </div>
                             </div> 
                             <div class="control-group">
                                 <label class="control-label" for="basicinput">Expiry Date</label>
                                 <div class="controls">
-                                    <input type="date"  name="txtDate" value="<%=exDate%>" id="basicinput" placeholder="Type something here..." class="span8" required>
+                                    <input type="date"  name="txtDate" value="<%=exDate%>" id="basicinput" placeholder="Choose expiry date" class="span8" required>
                                     <span class="help-inline"></span>
                                 </div>
                             </div> 
@@ -100,13 +104,13 @@
                             <div class="control-group">
                                 <label class="control-label" for="basicinput">Picture Name</label>
                                 <div class="controls">
-                                    <input type="text" name="txtPic"  value="<%=pic%>" id="basicinput" placeholder="Type something here..." class="span8" required>
+                                    <input type="text" name="txtPic"  value="<%=pic%>" id="basicinput" placeholder="Input picture name include extention" class="span8" required>
                                     <span class="help-inline"></span>
                                 </div>
                             </div> 
                             <div class="control-group">
                                 <div class="controls">
-                                    <button type="submit" class="btn" name="btnInserItem">Insert</button>
+                                    <input type="submit" class="btn" name="btnInserItem" value="Insert">
                                 </div>
                             </div>
                         </form>

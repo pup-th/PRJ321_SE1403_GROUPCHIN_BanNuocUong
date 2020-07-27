@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>CONTACT | GROUPCHIN</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -27,7 +27,7 @@
             <div class="col-md-4" align="center">
                 <div class="card">
                     <img src="background/phuc.jpg" class="rounded-circle" alt="Responsive image"width="100%" height="100%">
-                    <div class="container">
+                    <div class="containera">
                         <h2>Tran Hoang Phuc</h2>
                         <p class="title">Leader</p>
                         <p>PhucTHCE14xxxx@fpt.edu.vn</p>
@@ -39,7 +39,7 @@
             <div class="col-md-4" align="center">
                 <div class="card">
                     <img src="background/tri.jpg" class="rounded-circle" alt="Responsive image" width="100%" height="100%">
-                    <div class="container">
+                    <div class="containera">
                         <h2>Le Minh Tri</h2>
                         <p class="title">Member</p>
                         <p>TriLMCE14xxxx@fpt.edu.vn</p>
@@ -51,7 +51,7 @@
             <div class="col-md-4" align="center">
                 <div class="card">
                     <img src="background/qui.png" class="rounded-circle" alt="Responsive image"width="100%" height="100%">
-                    <div class="container">
+                    <div class="containera">
                         <h2>Tran Hoang Qui</h2>
                         <p class="title">Member</p>
                         <p>QuiTHCE140632@fpt.edu.vn</p>
@@ -64,7 +64,7 @@
             <div align="center">
                 <div class="card">
                     <img src="background/mentor.jpg" class="rounded-circle" alt="Responsive image" width="100%" height="100%">
-                    <div class="container">
+                    <div class="containera">
                         <h2>Luong Hoang Huong</h2>
                         <p class="title">Mentor</p>
                         <p>HuongLH@fpt.edu.vn</p>

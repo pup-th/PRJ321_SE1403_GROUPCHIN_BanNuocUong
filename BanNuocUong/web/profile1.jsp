@@ -15,7 +15,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!------ Include the above in your HEAD tag ---------->
 
-        <title>Bootstrap Example</title>
+        <title>PROFILE | GROUPCHIN</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -162,13 +162,13 @@
                                         <input type="hidden" name="checkopass" value="<%= oldpass%>"/>
                                         <input type="hidden" name="omail" value="<%= mail%>"/>
                                         <label for="first_name"><h4>Old password</h4></label>
-                                        <input type="text" pattern="\w{6,}" class="form-control" name="opass" id="first_name" placeholder="old password" title="enter your old password if any.">
+                                        <input type="text" pattern="\w{6,}"  class="form-control" name="opass" id="first_name" placeholder="Old password" title="Enter your old password. At least 6 characters">
 
                                         <label for="last_name"><h4>New password</h4></label>
-                                        <input type="text"  pattern="\w{6,}" class="form-control" name="npass" id="last_name" placeholder="new password" title="enter your new password if any.">
+                                        <input type="text"  pattern="\w{6,}" class="form-control" name="npass" id="last_name" placeholder="New password" title="Enter your new password. At least 6 characters">
 
                                         <label for="phone"><h4>Confirm password</h4></label>
-                                        <input type="text"  pattern="\w{6,}" class="form-control" name="cpass" id="phone" placeholder="confirm password" title="enter your confirm password if any.">
+                                        <input type="text"  pattern="\w{6,}" class="form-control" name="cpass" id="phone" placeholder="Confirm password" title="Enter your confirm password. At least 6 characters">
                                         <c:if test="<%=fail.isEmpty()%>">
                                             <p style="color: red"><%=fail%></p>
                                         </c:if>
@@ -182,17 +182,15 @@
                                 </div>
                             </form>
 
-                        </div><!--/tab-pane-->
-                        <%
-//                            ArrayList<Entities.OrderDetail> listorder = new ArrayList<>();
-//                            DAO.UserDAO userdao = new UserDAO();
-//                            listorder = userdao.getHisPurchase(mail);
-
-                        %>
+                        </div><!--/tab-pane--> 
                         <div class="tab-pane" id="settings">
                             <table>
-                                <%                                    DAO.UserDAO userdao = new UserDAO();
+                                <%
+                                    DAO.UserDAO userdao = new UserDAO();
                                     ArrayList<Entities.OrderDetail> listorder = userdao.getHisPurchase(mail);
+                                    if(listorder.isEmpty()){
+                                        out.println("<p align='center'>No information about purchase history</p>");
+                                    }else{
                                     int count = 1;
                                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
                                     out.println("<tr align='center'>");
@@ -209,14 +207,14 @@
                                         out.println("<td>" + count++ + "</td>");
                                         out.println("<td>" + userdao.getNameItemById(elem.getiId()) + "</td>");
                                         out.println("<td>" + elem.getQuantity() + "</td>");
-                                        out.println("<td>" + price + "</td>");
+                                        out.println("<td>" + elem.getPrice() + "</td>");
                                         out.println("<td>" + sdf.format(elem.getOrderDate()) + "</td>");
-                                        out.println("<td>" + (price * elem.getQuantity()) + "</td>");
+                                        out.println("<td>" + (elem.getPrice() * elem.getQuantity()) + "</td>");
                                         out.println("<tr>");
-                                    }
+                                    }}
                                 %>
-                            </table>
-                        </div>
+                            </table>    
+                        </div> 
                     </div><!--/tab-pane-->
                 </div><!--/tab-content-->
 

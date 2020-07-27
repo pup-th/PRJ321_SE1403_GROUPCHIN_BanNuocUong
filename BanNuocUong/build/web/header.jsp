@@ -30,22 +30,22 @@
         %>
         <header id="header"><!--header--> 
 
-            <div class="header-middle"><!--header-middle-->
+<!--            <div class="header-middle">header-middle
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-4">
-                            <div class="logo pull-left">
-                                <a href="home.jsp"><img src="images/home/logo.png" alt="" /></a>
+                        <div class="">
+                            <div style="float: left">
+                                <a href="home.jsp"><h4>GROUP</h4><img src="images/home/chin.png" alt="" /></a>
                             </div>
                         </div> 
                     </div>
                 </div>
-            </div><!--/header-middle-->
+            </div>/header-middle-->
 
             <div class="header-bottom"><!--header-bottom-->
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-9">
+                        <div class="col-sm-9" style="width: 100%">
                             <div class="navbar-header">
                                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                     <span class="sr-only">Toggle navigation</span>
@@ -54,6 +54,16 @@
                                     <span class="icon-bar"></span>
                                 </button>
                             </div>
+                            <div class="container">
+                    <div class="row">
+                        <div class="">
+                            <div style="float: left">
+                                <a href="home.jsp"><h4>GROUP</h4><img src="images/home/chin.png" alt="" /></a>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                            
                             <div class="mainmenu pull-left">
                                 <ul class="nav navbar-nav collapse navbar-collapse">
                                     <li><a href="home.jsp" class="active">HOME</a></li>
@@ -88,11 +98,6 @@
                                     </c:choose> 
                                     
                                 </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="search_box pull-right">
-                                <input type="text" placeholder="Search"/>
                             </div>
                         </div>
                     </div>

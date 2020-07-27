@@ -95,10 +95,7 @@ public class ItemDAO {
     }
 
     public boolean insert(Itemall i) {
-        String sql = "INSERT INTO item`(tId`, bId, iName, blockId, size, "
-                + "pId, outputPrice, orginCode, status, "
-                + "quantity, rId, discoutnStatus, vouId, taste, expiryDate, iPic) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO `item`(`tId`, `bId`, `iName`, `blockId`, `size`, `pId`, `outputPrice`, `orginCode`, `status`, `quantity`, `rId`, `discoutnStatus`, `vouId`, `taste`, `expiryDate`, `iPic`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, 1);
@@ -267,7 +264,7 @@ public class ItemDAO {
 
     public int inserTotOrder(String uMail) {
         try {
-            PreparedStatement pst1 = conn.prepareStatement("INSERT INTO orders`(uMail`) "
+            PreparedStatement pst1 = conn.prepareStatement("INSERT INTO `orders`(`uMail`) "
                     + "VALUES (?)");
             pst1.setString(1, uMail);
             return pst1.executeUpdate();
@@ -279,8 +276,8 @@ public class ItemDAO {
 
     public int inserTotOrderDetail(int iId, OrderDetail oDetail) {
         try {
-            PreparedStatement pst2 = conn.prepareStatement("INSERT INTO orderdetail`(oId`, payId, uMail, iId, quantity, note, orderDate)"
-                    + "VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement pst2 = conn.prepareStatement("INSERT INTO `orderdetail`(`oId`, `payId`, `uMail`, `iId`, `quantity`, `price`, `orderDate`,`note` )"
+                    + "VALUES (?,?,?,?,?,?,?,?)");
             pst2.setInt(1, oDetail.getoId());
             pst2.setInt(2, oDetail.getPayId());
             pst2.setString(3, oDetail.getuMail());
@@ -288,6 +285,7 @@ public class ItemDAO {
             pst2.setInt(5, oDetail.getQuantity());
             pst2.setInt(6, oDetail.getPrice());
             pst2.setDate(7, (java.sql.Date)oDetail.getOrderDate());
+            pst2.setString(8, "");
             return pst2.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
