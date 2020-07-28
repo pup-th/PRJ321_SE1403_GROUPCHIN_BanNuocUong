@@ -144,7 +144,7 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img src="douong/${item.getImg()}" alt="" />
+                                                <img src="douong/${item.getImg()}" alt="" height="275px" width="275px"  />
                                                 <h2>${item.getPrice()}</h2>
                                                 <p>${item.getName()}</p> 
                                             </div>

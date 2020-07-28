@@ -3,20 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/profile1.jsp</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/src/java/DAO/AdminDAO.java</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/css/aboutUs.css</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/css/main.css</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/css/theme.css</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/table.jsp</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/header.jsp</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/footer.jsp</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/contact-us.jsp</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/form.jsp</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/src/java/DAO/ItemDAO.java</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/src/java/Controllers/BuyController.java</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/home.jsp</file>
-            <file>file:/C:/Users/Asus/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/cart.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/list-user.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/src/java/Entities/Users.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/index.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/src/java/Controllers/AdminController.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/web/update.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/PRJ321_SE1403_GROUPCHIN_BanNuocUong/BanNuocUong/src/java/DAO/UserDAO.java</file>
         </group>
     </open-files>
 </project-private>

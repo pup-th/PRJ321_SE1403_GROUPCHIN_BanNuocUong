@@ -6,7 +6,9 @@
 package Controllers;
 
 import DAO.ItemDAO;
+import DAO.UserDAO;
 import Entities.Itemall;
+import Entities.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -33,25 +35,27 @@ public class AdminController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-            ItemDAO idao = new ItemDAO();
-        
-            if (request.getParameter("btnInserItem") != null) {
+        ItemDAO idao = new ItemDAO();
+        if (request.getParameter("btnInserItem") != null) {
             int price = Integer.parseInt(request.getParameter("txtPrice"));
             int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
             String name = request.getParameter("txtName");
             String taste = request.getParameter("txtTaste");
             String pic = request.getParameter("txtPic");
             Date expiryDate = Date.valueOf(request.getParameter("txtDate"));
-            if(request.getParameter("txtId")==null){
-                Itemall itemall = new Itemall(name, price, quantity, taste, expiryDate, pic); 
+            if (request.getParameter("txtId") == null) {
+                Itemall itemall = new Itemall(name, price, quantity, taste, expiryDate, pic);
                 idao.insert(itemall);
                 request.getRequestDispatcher("admin.jsp").forward(request, response);
-            }else{
+            } else {
                 int id = Integer.parseInt(request.getParameter("txtId"));
                 idao.updateItem(id, name, price, quantity, taste, expiryDate, pic);
                 request.getRequestDispatcher("table.jsp").forward(request, response);
             }
         }
+        
+      
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -88,15 +92,28 @@ public class AdminController extends HttpServlet {
             String taste = request.getParameter("txtTaste");
             String pic = request.getParameter("txtPic");
             Date expiryDate = Date.valueOf(request.getParameter("txtDate"));
-            if(request.getParameter("txtId") == null){
-                Itemall itemall = new Itemall(name, price, quantity, taste, expiryDate, pic); 
+            if (request.getParameter("txtId") == null) {
+                Itemall itemall = new Itemall(name, price, quantity, taste, expiryDate, pic);
                 idao.insert(itemall);
                 request.getRequestDispatcher("admin.jsp").forward(request, response);
-            }else{
+            } else {
                 int id = Integer.parseInt(request.getParameter("txtId"));
                 idao.updateItem(id, name, price, quantity, taste, expiryDate, pic);
                 request.getRequestDispatcher("table.jsp").forward(request, response);
             }
+        }
+        
+          
+        if (request.getParameter("btnupdate") != null) {
+            UserDAO dAO = new UserDAO();
+            String umail = request.getParameter("txtemail");
+            String upassword = request.getParameter("txtpassword");
+            String uname = request.getParameter("txtname");
+            String uphone = request.getParameter("txtphone");
+            String uaddress = request.getParameter("txtaddress");
+            Users u = new Users(umail, upassword, uname, uphone, uaddress);
+            dAO.updateInfo(umail, upassword, uname, uphone, uaddress);
+            request.getRequestDispatcher("update.jsp").forward(request, response);
         }
 
     }

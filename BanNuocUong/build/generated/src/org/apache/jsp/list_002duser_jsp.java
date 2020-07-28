@@ -3,10 +3,11 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import DAO.AdminDAO;
 import java.util.ArrayList;
 import DAO.UserDAO;
 
-public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class list_002duser_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -18,10 +19,20 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_dependants.add("/admin-header.jsp");
   }
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -54,19 +65,12 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
-      out.write("<html lang=\"en\">\r\n");
-      out.write("    <head> \r\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n");
-      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n");
-      out.write("        <title>Admin</title>\r\n");
-      out.write("        <link type=\"text/css\" href=\"bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">\r\n");
-      out.write("        <link type=\"text/css\" href=\"bootstrap/css/bootstrap-responsive.min.css\" rel=\"stylesheet\">\r\n");
-      out.write("        <link type=\"text/css\" href=\"css/theme.css\" rel=\"stylesheet\">\r\n");
-      out.write("        <link type=\"text/css\" href=\"images/icons/css/font-awesome.css\" rel=\"stylesheet\">\r\n");
-      out.write("        <link type=\"text/css\" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600\r\n");
-      out.write("'\r\n");
-      out.write("              rel='stylesheet'>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <title>LIST USERS | ADMIN</title>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
       out.write("        ");
@@ -165,56 +169,94 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</html>");
       out.write("\r\n");
       out.write("        ");
-            int numberUser = new UserDAO().numberUsers();
-            int numberOrder = new UserDAO().numberOrders();
-            int numberMoney = new UserDAO().numberMoney();
+            UserDAO uDAO = new UserDAO();
+            ArrayList<String> listMail = new ArrayList<String>();
             
+            if(request.getParameter("del")!= null){
+                new AdminDAO().deleteUser(request.getParameter("del"));
+            }
+            listMail = uDAO.getAll();
         
       out.write("\r\n");
-      out.write("        <!--/.span3-->\r\n");
       out.write("        <div class=\"span9\">\r\n");
       out.write("            <div class=\"content\">\r\n");
-      out.write("                <div class=\"btn-controls\">\r\n");
-      out.write("                    <div class=\"btn-box-row row-fluid\">\r\n");
-      out.write("                        <a href=\"#\" class=\"btn-box big span4\"><i class=\" icon-random\"></i><b>");
-      out.print(numberOrder);
-      out.write("</b>\r\n");
-      out.write("                            <p class=\"text-muted\">\r\n");
-      out.write("                                All Orders</p>\r\n");
-      out.write("                        </a><a href=\"#\" class=\"btn-box big span4\"><i class=\"icon-user\"></i><b>");
-      out.print(numberUser);
-      out.write("</b>\r\n");
-      out.write("                            <p class=\"text-muted\">\r\n");
-      out.write("                                All Users</p>\r\n");
-      out.write("                        </a><a href=\"#\" class=\"btn-box big span4\"><i class=\"icon-money\"></i><b>");
-      out.print(numberMoney);
-      out.write(" VND</b>\r\n");
-      out.write("                            <p class=\"text-muted\">\r\n");
-      out.write("                                All Money</p>\r\n");
-      out.write("                        </a>\r\n");
-      out.write("                    </div>\r\n");
-      out.write("                            <br>\r\n");
-      out.write("                    <div class=\"btn-box-row row-fluid\">\r\n");
-      out.write("                        <a href=\"table.jsp\" class=\"btn-box big span4\"><i class=\" icon-envelope\"></i><b> </b>\r\n");
-      out.write("                            <p class=\"text-muted\">\r\n");
-      out.write("                                Reports</p>\r\n");
-      out.write("                        </a><a href=\"list-user.jsp\" class=\"btn-box big span4\"><i class=\"icon-group\"></i><b> </b>\r\n");
-      out.write("                            <p class=\"text-muted\">\r\n");
-      out.write("                                 List Users</p>\r\n");
-      out.write("                        </a><a href=\"form.jsp\" class=\"btn-box big span4\"><i class=\"icon-exchange\"></i><b> </b>\r\n");
-      out.write("                            <p class=\"text-muted\">\r\n");
-      out.write("                                insert Item</p>\r\n");
-      out.write("                        </a>\r\n");
+      out.write("                <div class=\"module\">\r\n");
+      out.write("                    <div class=\"module-head\">\r\n");
+      out.write("                        <h3>\r\n");
+      out.write("                            All Members\r\n");
+      out.write("                        </h3>\r\n");
       out.write("                    </div> \r\n");
-      out.write("                </div>  \r\n");
-      out.write("                <!--/.module-->\r\n");
+      out.write("                    <div class=\"module-body\">\r\n");
+      out.write("                        ");
+      //  c:forEach
+      org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+      _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+      _jspx_th_c_forEach_0.setParent(null);
+      _jspx_th_c_forEach_0.setVar("user");
+      _jspx_th_c_forEach_0.setItems(listMail);
+      int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+      try {
+        int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+        if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+          do {
+            out.write("\r\n");
+            out.write("                            <div class=\"row-fluid\">\r\n");
+            out.write("                                <div class=\"span6\">\r\n");
+            out.write("                                    <div class=\"media user\">\r\n");
+            out.write("                                        <a class=\"media-avatar pull-left\" href=\"#\">\r\n");
+            out.write("                                            <img src=\"images/avatar.png\">\r\n");
+            out.write("                                        </a>\r\n");
+            out.write("                                        <div class=\"media-body\">\r\n");
+            out.write("                                            <h3 class=\"media-title\">\r\n");
+            out.write("                                                ");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("\r\n");
+            out.write("                                            </h3>\r\n");
+            out.write("                                            <p>\r\n");
+            out.write("                                                <small class=\"muted\"> </small></p>\r\n");
+            out.write("                                            <div class=\"media-option btn-group shaded-icon\">\r\n");
+            out.write("                                                <a class=\"btn btn-small\" href=\"?del=");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("\">\r\n");
+            out.write("                                                    <i class=\"icon-trash\"></i>\r\n");
+            out.write("                                                </a> \r\n");
+            out.write("                                            </div>\r\n");
+            out.write("                                            <div class=\"media-option btn-group shaded-icon\">\r\n");
+            out.write("                                                <a class=\"btn btn-small\" href=\"update.jsp?update=");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("\">\r\n");
+            out.write("                                                    <i class=\"icon-upload\"></i>\r\n");
+            out.write("                                                </a> \r\n");
+            out.write("                                            </div>\r\n");
+            out.write("                                        </div>\r\n");
+            out.write("                                    </div>\r\n");
+            out.write("                                </div> \r\n");
+            out.write("                            </div>\r\n");
+            out.write("                        ");
+            int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+            if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+              break;
+          } while (true);
+        }
+        if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+          return;
+        }
+      } catch (Throwable _jspx_exception) {
+        while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+          out = _jspx_page_context.popBody();
+        _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+      } finally {
+        _jspx_th_c_forEach_0.doFinally();
+        _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+      }
+      out.write(" \r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("            <!--/.content-->\r\n");
       out.write("        </div>\r\n");
-      out.write("        <!--/.span9--> \r\n");
-      out.write("\r\n");
       out.write("    </body>\r\n");
-      out.write("</html>");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

@@ -52,6 +52,11 @@
                                                     <i class="icon-trash"></i>
                                                 </a> 
                                             </div>
+                                            <div class="media-option btn-group shaded-icon">
+                                                <a class="btn btn-small" href="update.jsp?update=${user}">
+                                                    <i class="icon-upload"></i>
+                                                </a> 
+                                            </div>
                                         </div>
                                     </div>
                                 </div> 
