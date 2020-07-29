@@ -37,28 +37,33 @@ public class ChangeController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             if (request.getParameter("btnSaveinfo") != null) {
-                String nname = request.getParameter("nname");
-                String nphone = request.getParameter("nphone");
-                String nmail = request.getParameter("nmail");
-                String omail = request.getParameter("omail");
-                String naddress = request.getParameter("naddress");
-                DAO.UserDAO dao = new DAO.UserDAO();
-                int check = dao.updateInfo(nmail, nname, nphone, naddress, omail);
-                if (check != 0) {
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('Your information is saved !');");
-                    out.println("location='profile1.jsp';");
-                    out.println("</script>");
-//                    response.sendRedirect("profile.jsp");
-                } else {
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('Cannot save your information !');");
-                    out.println("location='profile1.jsp';");
-                    out.println("</script>");
-//                    response.sendRedirect("history.jsp");
+                try {
+                    String nname = request.getParameter("nname");
+                    String nphone = request.getParameter("nphone");
+                    String nmail = request.getParameter("nmail");
+                    String omail = request.getParameter("omail");
+                    String naddress = request.getParameter("naddress");
+                    DAO.UserDAO dao = new DAO.UserDAO();
+                    int check = dao.updateInfo(nmail, nname, nphone, naddress, omail);
+                    if (check != 0) {
+                        out.println("<script type=\"text/javascript\">");
+                        out.println("alert('Your information is saved !');");
+                        out.println("location='profile1.jsp';");
+                        out.println("</script>");
+    //                    response.sendRedirect("profile.jsp");
+                    } else {
+                        out.println("<script type=\"text/javascript\">");
+                        out.println("alert('Cannot save your information !');");
+                        out.println("location='profile1.jsp';");
+                        out.println("</script>");
+    //                    response.sendRedirect("history.jsp");
+                    }
+                } catch (Exception e) {
+                    request.getRequestDispatcher("404-error.jsp").forward(request, response);
                 }
             }
-        }    }
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

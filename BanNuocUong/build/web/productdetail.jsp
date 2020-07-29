@@ -73,13 +73,12 @@
 
         <%
             DAO.ItemDAO itemdao = new ItemDAO();
-            int id = Integer.parseInt(request.getParameter("proid"));
-//            if(request.getSession().getAttribute("idpro")!=null){
-//                id=Integer.parseInt(request.getSession().getAttribute("idpro").toString());
-//            }
-//            else{id= ;0;
-
-//            }
+            int id = -1;
+            try {
+                id = Integer.parseInt(request.getParameter("proid"));    
+            } catch (Exception e) {
+                request.getRequestDispatcher("404-error.jsp").forward(request, response);
+            } 
             Itemall iall = itemdao.getNameOfItemById(id);
             String img = iall.getiPic();
             String size = iall.getSize();

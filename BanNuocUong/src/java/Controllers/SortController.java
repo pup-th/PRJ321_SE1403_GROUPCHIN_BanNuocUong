@@ -48,6 +48,8 @@ public class SortController extends HttpServlet {
             out.println("<h1>Servlet SortController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
+        }catch(Exception e){
+            request.getRequestDispatcher("404-error.jsp").forward(request, response);
         }
     }
 

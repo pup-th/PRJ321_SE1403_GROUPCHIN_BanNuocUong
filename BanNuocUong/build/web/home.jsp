@@ -125,6 +125,15 @@
                                         <h4 class="panel-title"><a href="<%=path%>?high=1">High -> Low</a></h4>
                                     </div>
                                 </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" > 
+                                        <div class="search_box pull-right">
+                                            <form action="">
+                                                <input type="text" name="txtSearch" placeholder="Search">
+                                            </form>
+                                        </div> 
+                                    </div>
+                                </div>
                             </div><!--/category-products--> 
                         </div>
                     </div>
@@ -134,6 +143,7 @@
                                 : (request.getParameter("high") != null) ? it.sortItemByPricehighlow()
                                 : (request.getParameter("az") != null) ? it.sortItemByNameaz()
                                 : (request.getParameter("za") != null) ? it.sortItemByNameza()
+                                : (request.getParameter("txtSearch") != null) ? it.searchItemByString(request.getParameter("txtSearch"))
                                 : it.getNameOfItems();
                     %>
                     <div class="col-sm-9 padding-right">

@@ -367,6 +367,15 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("?high=1\">High -> Low</a></h4>\r\n");
       out.write("                                    </div>\r\n");
       out.write("                                </div>\r\n");
+      out.write("                                <div class=\"panel panel-default\">\r\n");
+      out.write("                                    <div class=\"panel-heading\" > \r\n");
+      out.write("                                        <div class=\"search_box pull-right\">\r\n");
+      out.write("                                            <form action=\"\">\r\n");
+      out.write("                                                <input type=\"text\" name=\"txtSearch\" placeholder=\"Search\">\r\n");
+      out.write("                                            </form>\r\n");
+      out.write("                                        </div> \r\n");
+      out.write("                                    </div>\r\n");
+      out.write("                                </div>\r\n");
       out.write("                            </div><!--/category-products--> \r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
@@ -377,6 +386,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
                                 : (request.getParameter("high") != null) ? it.sortItemByPricehighlow()
                                 : (request.getParameter("az") != null) ? it.sortItemByNameaz()
                                 : (request.getParameter("za") != null) ? it.sortItemByNameza()
+                                : (request.getParameter("txtSearch") != null) ? it.searchItemByString(request.getParameter("txtSearch"))
                                 : it.getNameOfItems();
                     
       out.write("\r\n");

@@ -35,59 +35,63 @@ public class UserController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
-        UserDAO uDAO = new UserDAO();
-        AdminDAO aDAO = new AdminDAO();
-        String email = request.getParameter("txtEmail");
-        String pass = request.getParameter("txtPass");
-        String name = request.getParameter("txtName");
-        String phone = request.getParameter("txtPhone");
-        String address = request.getParameter("txtAddress");
-        if (address == null) {
-            if (email != null && pass != null) {
-                String user = uDAO.checkLogin(email, pass);
-                String admin = aDAO.checkLogin(email, pass);
-                if(!admin.isEmpty()){
-                    request.getSession().setAttribute("aMail", admin);
-                    request.getRequestDispatcher("admin.jsp").forward(request, response);
-                }else{
-                    if (!user.isEmpty()) {
-                        request.getSession().setAttribute("uMail", user);
-                        request.getRequestDispatcher("home.jsp").forward(request, response); 
-                    } else {
-                        request.getSession().setAttribute("fail", "Wrong Username or Password");
-                        request.getRequestDispatcher("login.jsp").forward(request, response); 
-                    }
-                }
-            } else {
-                String mail = request.getParameter("mail");
-                if (mail != null) {
-                    String uMail = uDAO.checkLoginByGoogle(mail);
-                    String aMail = aDAO.checkLoginByGoogle(mail);
-                    if(!aMail.isEmpty()){
-                        request.getSession().setAttribute("aMail", aMail);
+        try {
+            
+            UserDAO uDAO = new UserDAO();
+            AdminDAO aDAO = new AdminDAO();
+            String email = request.getParameter("txtEmail");
+            String pass = request.getParameter("txtPass");
+            String name = request.getParameter("txtName");
+            String phone = request.getParameter("txtPhone");
+            String address = request.getParameter("txtAddress");
+            if (address == null) {
+                if (email != null && pass != null) {
+                    String user = uDAO.checkLogin(email, pass);
+                    String admin = aDAO.checkLogin(email, pass);
+                    if(!admin.isEmpty()){
+                        request.getSession().setAttribute("aMail", admin);
                         request.getRequestDispatcher("admin.jsp").forward(request, response);
                     }else{
-                        if (uMail.equals("")) {
-                            request.getSession().setAttribute("fail", "You don't have account on our website, please Register");
-                            request.getRequestDispatcher("login.jsp").forward(request, response); 
-                        } else {
-                            request.getSession().setAttribute("uMail", mail);
+                        if (!user.isEmpty()) {
+                            request.getSession().setAttribute("uMail", user);
                             request.getRequestDispatcher("home.jsp").forward(request, response); 
+                        } else {
+                            request.getSession().setAttribute("fail", "Wrong Username or Password");
+                            request.getRequestDispatcher("login.jsp").forward(request, response); 
+                        }
+                    }
+                } else {
+                    String mail = request.getParameter("mail");
+                    if (mail != null) {
+                        String uMail = uDAO.checkLoginByGoogle(mail);
+                        String aMail = aDAO.checkLoginByGoogle(mail);
+                        if(!aMail.isEmpty()){
+                            request.getSession().setAttribute("aMail", aMail);
+                            request.getRequestDispatcher("admin.jsp").forward(request, response);
+                        }else{
+                            if (uMail.equals("")) {
+                                request.getSession().setAttribute("fail", "You don't have account on our website, please Register");
+                                request.getRequestDispatcher("login.jsp").forward(request, response); 
+                            } else {
+                                request.getSession().setAttribute("uMail", mail);
+                                request.getRequestDispatcher("home.jsp").forward(request, response); 
+                            }
                         }
                     }
                 }
+            } else {
+                try {
+                    Users u = new Users(email, pass, name, phone, address);
+                    uDAO.register(u);
+                    request.setAttribute("fillEmail", email);
+                    request.setAttribute("fillPass", pass);
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-        } else {
-            try {
-                Users u = new Users(email, pass, name, phone, address);
-                uDAO.register(u);
-                request.setAttribute("fillEmail", email);
-                request.setAttribute("fillPass", pass);
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            } catch (SQLException ex) {
-                Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (Exception e) {
+            request.getRequestDispatcher("404-error.jsp").forward(request, response);
         }
     }
 
@@ -117,60 +121,63 @@ public class UserController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException { 
-        
-        UserDAO uDAO = new UserDAO();
-        AdminDAO aDAO = new AdminDAO();
-        String email = request.getParameter("txtEmail");
-        String pass = request.getParameter("txtPass");
-        String name = request.getParameter("txtName");
-        String phone = request.getParameter("txtPhone");
-        String address = request.getParameter("txtAddress");
-        if (address == null) {
-            if (email != null && pass != null) {
-                String user = uDAO.checkLogin(email, pass);
-                String admin = aDAO.checkLogin(email, pass);
-                if(!admin.isEmpty()){ 
-                    request.getSession().setAttribute("aMail", admin);
-                    request.getRequestDispatcher("admin.jsp").forward(request, response);
-                }else{
-                    if (!user.isEmpty()) {
-                        request.getSession().setAttribute("uMail", user);
-                        request.getRequestDispatcher("home.jsp").forward(request, response); 
-                    } else {
-                        request.getSession().setAttribute("fail", "Wrong Username or Password");
-                        request.getRequestDispatcher("login.jsp").forward(request, response); 
-                    }
-                }
-            } else {
-                String mail = "";
-                if (request.getParameter("mail") != null) {
-                    mail = request.getParameter("mail");
-                    String uMail = uDAO.checkLoginByGoogle(mail);
-                    String aMail = aDAO.checkLoginByGoogle(mail);
-                    if(!aMail.isEmpty()){
-                        request.getSession().setAttribute("aMail", aMail);
+        try{
+            UserDAO uDAO = new UserDAO();
+            AdminDAO aDAO = new AdminDAO();
+            String email = request.getParameter("txtEmail");
+            String pass = request.getParameter("txtPass");
+            String name = request.getParameter("txtName");
+            String phone = request.getParameter("txtPhone");
+            String address = request.getParameter("txtAddress");
+            if (address == null) {
+                if (email != null && pass != null) {
+                    String user = uDAO.checkLogin(email, pass);
+                    String admin = aDAO.checkLogin(email, pass);
+                    if(!admin.isEmpty()){ 
+                        request.getSession().setAttribute("aMail", admin);
                         request.getRequestDispatcher("admin.jsp").forward(request, response);
                     }else{
-                        if (uMail.equals("")) {
-                            request.getSession().setAttribute("fail", "You don't have account on our website, please Register");
-                            request.getRequestDispatcher("login.jsp").forward(request, response); 
-                        } else {
-                            request.getSession().setAttribute("uMail", mail);
+                        if (!user.isEmpty()) {
+                            request.getSession().setAttribute("uMail", user);
                             request.getRequestDispatcher("home.jsp").forward(request, response); 
+                        } else {
+                            request.getSession().setAttribute("fail", "Wrong Username or Password");
+                            request.getRequestDispatcher("login.jsp").forward(request, response); 
+                        }
+                    }
+                } else {
+                    String mail = "";
+                    if (request.getParameter("mail") != null) {
+                        mail = request.getParameter("mail");
+                        String uMail = uDAO.checkLoginByGoogle(mail);
+                        String aMail = aDAO.checkLoginByGoogle(mail);
+                        if(!aMail.isEmpty()){
+                            request.getSession().setAttribute("aMail", aMail);
+                            request.getRequestDispatcher("admin.jsp").forward(request, response);
+                        }else{
+                            if (uMail.equals("")) {
+                                request.getSession().setAttribute("fail", "You don't have account on our website, please Register");
+                                request.getRequestDispatcher("login.jsp").forward(request, response); 
+                            } else {
+                                request.getSession().setAttribute("uMail", mail);
+                                request.getRequestDispatcher("home.jsp").forward(request, response); 
+                            }
                         }
                     }
                 }
+            } else {
+                try {
+                    Users u = new Users(email, pass, name, phone, address);
+                    uDAO.register(u);
+                    request.setAttribute("fillEmail", email);
+                    request.setAttribute("fillPass", pass);
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-        } else {
-            try {
-                Users u = new Users(email, pass, name, phone, address);
-                uDAO.register(u);
-                request.setAttribute("fillEmail", email);
-                request.setAttribute("fillPass", pass);
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            } catch (SQLException ex) {
-                Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (Exception e) {
+            request.getRequestDispatcher("404-error.jsp").forward(request, response);
         }
     }
 

@@ -29,6 +29,17 @@ public class ItemDAO {
         this.conn = new DBConnection().getConnection();
     }
 
+    public ArrayList searchItemByString(String regex) {
+        ArrayList<Entities.Items> listSearch = new ArrayList<>();
+        for (Object items : getNameOfItems()) {
+            Items i = (Items) items;
+            if (i.getName().contains(regex)) {
+                listSearch.add(i);
+            }
+        }
+        return listSearch;
+    }
+
     public Itemall getNameOfItemById(int iId) {
         try {
             String sql = "SELECT * FROM item WHERE `iId`=?";
@@ -61,7 +72,8 @@ public class ItemDAO {
         }
         return null;
     }
-    public ArrayList<Entities.Itemall> getAll(){
+
+    public ArrayList<Entities.Itemall> getAll() {
         try {
             ArrayList<Itemall> listItem = new ArrayList<>();
             String sql = "SELECT * FROM item WHERE 1";
@@ -102,7 +114,7 @@ public class ItemDAO {
             pst.setInt(2, 1);
             pst.setString(3, i.getiName());
             pst.setInt(4, 1);
-            pst.setString(5,"M");
+            pst.setString(5, "M");
             pst.setInt(6, i.getpId());
             pst.setInt(7, 0);
             pst.setString(8, "1");
@@ -121,16 +133,15 @@ public class ItemDAO {
         }
         return false;
     }
-    
 
     public int updateItem(int id, String name, int price, int quan, String taste, Date exDate, String pic) {
         String sql = "UPDATE item SET iName`=?,pId`=?, quantity`=?,taste`=?,`expiryDate`=?,`iPic`=? WHERE `iId`=?";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
- 
-            pst.setString(1, name); 
-            pst.setInt(2, price); 
-            pst.setInt(3, quan);  
+
+            pst.setString(1, name);
+            pst.setInt(2, price);
+            pst.setInt(3, quan);
             pst.setString(4, taste);
             pst.setDate(5, exDate);
             pst.setString(6, pic);
@@ -284,7 +295,7 @@ public class ItemDAO {
             pst2.setInt(4, iId);
             pst2.setInt(5, oDetail.getQuantity());
             pst2.setInt(6, oDetail.getPrice());
-            pst2.setDate(7, (java.sql.Date)oDetail.getOrderDate());
+            pst2.setDate(7, (java.sql.Date) oDetail.getOrderDate());
             pst2.setString(8, "");
             return pst2.executeUpdate();
         } catch (SQLException ex) {
@@ -305,4 +316,30 @@ public class ItemDAO {
         }
         return 0;
     }
-} 
+
+    public int changeQuantity(int iId, int newquantity) {
+        try {
+            PreparedStatement pst = conn.prepareStatement("UPDATE `item` SET `quantity`=? WHERE `iId`=?");
+            pst.setInt(1, newquantity);
+            pst.setInt(2, iId);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public int geQuantityById(int id) {
+        try {
+            PreparedStatement pst = conn.prepareStatement("SELECT `quantity` FROM `item` WHERE `iId`= ?");
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                return rs.getInt("quantity");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+}

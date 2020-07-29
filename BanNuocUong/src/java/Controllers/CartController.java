@@ -76,40 +76,40 @@ public class CartController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            HashMap<Integer, Integer> map = new HashMap<>();
-        if (request.getSession().getAttribute("uMail") != null) {
-            int id = Integer.parseInt(request.getParameter("cartId"));
-            int quan = Integer.parseInt(request.getParameter("cartQuantity"));
-//        HashMap<Integer, Integer> map = new HashMap<>();
-//        if (map.containsKey(id)) {
-//            map.put(id, map.get(id) + quan);
-//        } else {
-//            map.put(id, quan);
-//        }
-            if (request.getSession().getAttribute("hashMapItemCart") != null) {
-                map = (HashMap<Integer, Integer>) request.getSession().getAttribute("hashMapItemCart");
-                if (map.containsKey(id)) {
-                    map.put(id, map.get(id) + quan);
-                } else {
-                    map.put(id, quan);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        try {
+            if (request.getSession().getAttribute("uMail") != null) {
+                int id = Integer.parseInt(request.getParameter("cartId"));
+                int quan = Integer.parseInt(request.getParameter("cartQuantity"));
+                if (id > 0 && quan > 0) {
+
+                    if (request.getSession().getAttribute("hashMapItemCart") != null) {
+                        map = (HashMap<Integer, Integer>) request.getSession().getAttribute("hashMapItemCart");
+                        if (map.containsKey(id)) {
+                            map.put(id, map.get(id) + quan);
+                        } else {
+                            map.put(id, quan);
+                        }
+                    } else {
+
+                        map.put(id, quan);
+                        request.getSession().setAttribute("hashMapItemCart", map);
+                    }
                 }
+                else{
+                    request.getRequestDispatcher("404-error.jsp").forward(request, response);
+                } 
+                request.getRequestDispatcher("home.jsp").forward(request, response);
             } else {
-                
-                map.put(id, quan);
-                request.getSession().setAttribute("hashMapItemCart", map);
+                PrintWriter out = response.getWriter();
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('You must login before buy something!');");
+                out.println("location='home.jsp';");
+                out.println("</script>");
             }
-//        request.getSession().setAttribute("hashid", request.getParameter("cartId"));
-//        request.getSession().setAttribute("hashquantity", request.getParameter("cartQuantity"));
-//        request.getSession().setAttribute("idpro", id);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        } else {
-            PrintWriter out = response.getWriter();
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('You must login before buy something!');");
-            out.println("location='home.jsp';");
-            out.println("</script>");
-        }
-        
+        } catch (Exception e) {
+            request.getRequestDispatcher("404-error.jsp").forward(request, response);
+        } 
     }
 
     /**

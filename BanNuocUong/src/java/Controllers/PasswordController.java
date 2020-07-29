@@ -112,16 +112,15 @@ public class PasswordController extends HttpServlet {
                     
                     checkopass = sb.toString();
                     if (npass.equals(cpass)
-//                        && md5pass.equals(checkopass)
-                            ) {
+                        && md5pass.equals(checkopass)) {
                         DAO.UserDAO dao = new DAO.UserDAO();
                         dao.updatePassword(mail, npass);
                         request.getRequestDispatcher("home.jsp").forward(request, response);
                     } else {
                         request.setAttribute("changeFail", "Wrong password or Wrong confirm!");
                     }
-                } catch (NoSuchAlgorithmException ex) {
-                    Logger.getLogger(PasswordController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception e) {
+                    request.getRequestDispatcher("404-error.jsp").forward(request, response);
                 }
             } 
     }

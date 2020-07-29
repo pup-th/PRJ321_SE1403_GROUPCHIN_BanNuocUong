@@ -37,24 +37,31 @@ public class AdminController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ItemDAO idao = new ItemDAO();
         if (request.getParameter("btnInserItem") != null) {
-            int price = Integer.parseInt(request.getParameter("txtPrice"));
-            int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
-            String name = request.getParameter("txtName");
-            String taste = request.getParameter("txtTaste");
-            String pic = request.getParameter("txtPic");
-            Date expiryDate = Date.valueOf(request.getParameter("txtDate"));
-            if (request.getParameter("txtId") == null) {
-                Itemall itemall = new Itemall(name, price, quantity, taste, expiryDate, pic);
-                idao.insert(itemall);
-                request.getRequestDispatcher("admin.jsp").forward(request, response);
-            } else {
-                int id = Integer.parseInt(request.getParameter("txtId"));
-                idao.updateItem(id, name, price, quantity, taste, expiryDate, pic);
-                request.getRequestDispatcher("table.jsp").forward(request, response);
+            try {
+                int price = Integer.parseInt(request.getParameter("txtPrice"));
+                int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
+                String name = request.getParameter("txtName");
+                String taste = request.getParameter("txtTaste");
+                String pic = request.getParameter("txtPic");
+                Date expiryDate = Date.valueOf(request.getParameter("txtDate"));
+                if (price > 0 && quantity > 0
+                        && name.matches("([^()])\\w+")
+                        && taste.matches("([^()])\\w+")
+                        && pic.matches("([^()])\\w+")) {
+                    if (request.getParameter("txtId") == null) {
+                        Itemall itemall = new Itemall(name, price, quantity, taste, expiryDate, pic);
+                        idao.insert(itemall);
+                        request.getRequestDispatcher("admin.jsp").forward(request, response);
+                    } else {
+                        int id = Integer.parseInt(request.getParameter("txtId"));
+                        idao.updateItem(id, name, price, quantity, taste, expiryDate, pic);
+                        request.getRequestDispatcher("table.jsp").forward(request, response);
+                    }
+                }
+            } catch (Exception e) {
+                response.sendRedirect("error-404.jsp");
             }
         }
-        
-      
 
     }
 
@@ -86,34 +93,53 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         ItemDAO idao = new ItemDAO();
         if (request.getParameter("btnInserItem") != null) {
-            int price = Integer.parseInt(request.getParameter("txtPrice"));
-            int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
-            String name = request.getParameter("txtName");
-            String taste = request.getParameter("txtTaste");
-            String pic = request.getParameter("txtPic");
-            Date expiryDate = Date.valueOf(request.getParameter("txtDate"));
-            if (request.getParameter("txtId") == null) {
-                Itemall itemall = new Itemall(name, price, quantity, taste, expiryDate, pic);
-                idao.insert(itemall);
-                request.getRequestDispatcher("admin.jsp").forward(request, response);
-            } else {
-                int id = Integer.parseInt(request.getParameter("txtId"));
-                idao.updateItem(id, name, price, quantity, taste, expiryDate, pic);
-                request.getRequestDispatcher("table.jsp").forward(request, response);
+            try {
+                int price = Integer.parseInt(request.getParameter("txtPrice"));
+                int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
+                String name = request.getParameter("txtName");
+                String taste = request.getParameter("txtTaste");
+                String pic = request.getParameter("txtPic");
+                Date expiryDate = Date.valueOf(request.getParameter("txtDate"));
+                if (price > 0 && quantity > 0
+                        && name.matches("\\w+")
+                        && taste.matches("\\w+")
+                        && pic.matches("\\w+")) {
+                    if (request.getParameter("txtId") == null) {
+                        Itemall itemall = new Itemall(name, price, quantity, taste, expiryDate, pic);
+                        idao.insert(itemall);
+                        request.getRequestDispatcher("admin.jsp").forward(request, response);
+                    } else {
+                        int id = Integer.parseInt(request.getParameter("txtId"));
+                        idao.updateItem(id, name, price, quantity, taste, expiryDate, pic);
+                        request.getRequestDispatcher("table.jsp").forward(request, response);
+                    }
+                } else {
+                    response.sendRedirect("404-error.jsp");
+                }
+            } catch (Exception e) {
+                response.sendRedirect("error-404.jsp");
             }
         }
-        
-          
+
         if (request.getParameter("btnupdate") != null) {
             UserDAO dAO = new UserDAO();
+
             String umail = request.getParameter("txtemail");
             String upassword = request.getParameter("txtpassword");
             String uname = request.getParameter("txtname");
             String uphone = request.getParameter("txtphone");
             String uaddress = request.getParameter("txtaddress");
-            Users u = new Users(umail, upassword, uname, uphone, uaddress);
-            dAO.updateInfo(umail, upassword, uname, uphone, uaddress);
-            request.getRequestDispatcher("update.jsp").forward(request, response);
+            if (umail.matches("\\w+")
+                    && upassword.matches("\\w+")
+                    && uname.matches("\\w+")
+                    && uphone.matches("\\w+")
+                    && uaddress.matches("\\w+")) {
+                Users u = new Users(umail, upassword, uname, uphone, uaddress);
+                dAO.updateInfo(umail, upassword, uname, uphone, uaddress);
+                request.getRequestDispatcher("update.jsp").forward(request, response);
+            }else{
+                request.getRequestDispatcher("404-error.jsp").forward(request, response);
+            }
         }
 
     }
